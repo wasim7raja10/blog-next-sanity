@@ -7,11 +7,9 @@ export default function Header() {
 		<div className="bg-card py-6">
 			<Container>
 				<div className="flex justify-between items-center">
-					<h1>
-						<Link href={"/"}>
-							<Brand />
-						</Link>
-					</h1>
+					<Link href={"/"}>
+						<Brand />
+					</Link>
 					<div>search</div>
 				</div>
 			</Container>
