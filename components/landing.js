@@ -2,7 +2,6 @@ import Layout from "./layout";
 import Head from "next/head";
 import { BRAND_NAME } from "../lib/constants";
 import Container from "./container";
-import Intro from "./intro";
 import HeroPost from "./hero-post";
 import MoreStories from "./more-stories";
 
@@ -15,7 +14,6 @@ export default function Landing({ allPosts, preview }) {
 					<title>{`${BRAND_NAME} | Home`}</title>
 				</Head>
 				<Container>
-					<Intro />
 					{heroPost && (
 						<HeroPost
 							title={heroPost.title}

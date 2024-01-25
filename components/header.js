@@ -1,12 +1,17 @@
-import Link from 'next/link'
+import Container from "./container";
+import Link from "next/link";
+import Brand from "./brand";
 
 export default function Header() {
-  return (
-    <h2 className="text-2xl md:text-4xl font-bold tracking-tight md:tracking-tighter leading-tight mb-20 mt-8">
-      <Link href="/" className="hover:underline">
-        Blog
-      </Link>
-      .
-    </h2>
-  )
+	return (
+		<div>
+			<Container>
+				<h1>
+					<Link href={"/"}>
+						<Brand />
+					</Link>
+				</h1>
+			</Container>
+		</div>
+	);
 }

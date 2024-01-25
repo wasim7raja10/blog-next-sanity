@@ -1,7 +1,7 @@
 import { Roboto as FontSans } from "next/font/google";
 
 import { cn } from "@/lib/utils";
-import Alert from "../components/alert";
+import Header from "./header";
 import Footer from "../components/footer";
 import Meta from "../components/meta";
 
@@ -21,7 +21,7 @@ export default function Layout({ preview, children }) {
 					fontSans.variable
 				)}
 			>
-				<Alert preview={preview} />
+				<Header />
 				<main>{children}</main>
 			</div>
 			<Footer />
