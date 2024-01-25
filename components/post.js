@@ -3,7 +3,6 @@ import { urlForImage } from '../lib/sanity'
 import ErrorPage from 'next/error'
 import Layout from './layout'
 import Container from './container'
-import Header from './header'
 import PostTitle from './post-title'
 import Head from 'next/head'
 import { CMS_NAME } from '../lib/constants'
@@ -25,7 +24,6 @@ export default function Post({ data = {}, preview = false }) {
   return (
     <Layout preview={preview}>
       <Container>
-        <Header />
         {router.isFallback ? (
           <PostTitle>Loading…</PostTitle>
         ) : (
