@@ -4,13 +4,16 @@ import Brand from "./brand";
 
 export default function Header() {
 	return (
-		<div className="bg-card">
+		<div className="bg-card py-6">
 			<Container>
-				<h1>
-					<Link href={"/"}>
-						<Brand />
-					</Link>
-				</h1>
+				<div className="flex justify-between items-center">
+					<h1>
+						<Link href={"/"}>
+							<Brand />
+						</Link>
+					</h1>
+					<div>search</div>
+				</div>
 			</Container>
 		</div>
 	);
