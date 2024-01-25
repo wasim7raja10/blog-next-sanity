@@ -4,7 +4,7 @@ import Brand from "./brand";
 
 export default function Header() {
 	return (
-		<div>
+		<div className="bg-card">
 			<Container>
 				<h1>
 					<Link href={"/"}>
