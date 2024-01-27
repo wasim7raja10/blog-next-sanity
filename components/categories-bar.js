@@ -1,9 +1,13 @@
+import { ToggleGroup, ToggleGroupItem } from "./ui/toggle-group";
+
 export default function CategoriesBar({ allCategories }) {
 	return (
-		<ul>
-			{allCategories.map((it) => (
-				<li key={it._id}>{it.name}</li>
-			))}
-		</ul>
+		<div className="py-10">
+			<ToggleGroup type="single">
+				{allCategories.map((it) => (
+					<ToggleGroupItem value={it.slug}>{it.name}</ToggleGroupItem>
+				))}
+			</ToggleGroup>
+		</div>
 	);
 }
