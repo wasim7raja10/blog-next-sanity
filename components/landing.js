@@ -4,8 +4,9 @@ import { BRAND_NAME } from "../lib/constants";
 import Container from "./container";
 import HeroPost from "./hero-post";
 import MoreStories from "./more-stories";
+import CategoriesBar from "./categories-bar";
 
-export default function Landing({ allPosts, preview }) {
+export default function Landing({ allPosts, allCategories, preview }) {
 	const [heroPost, ...morePosts] = allPosts || [];
 	return (
 		<>
@@ -14,6 +15,7 @@ export default function Landing({ allPosts, preview }) {
 					<title>{`${BRAND_NAME} | Home`}</title>
 				</Head>
 				<Container>
+					{allCategories && <CategoriesBar allCategories={allCategories} />}
 					{heroPost && (
 						<HeroPost
 							title={heroPost.title}
