@@ -1,6 +1,7 @@
 import Container from "./container";
 import Link from "next/link";
 import Brand from "./brand";
+import Search from "./search";
 
 export default function Header() {
 	return (
@@ -10,7 +11,9 @@ export default function Header() {
 					<Link href={"/"}>
 						<Brand />
 					</Link>
-					<div>search</div>
+					<div>
+						<Search />
+					</div>
 				</div>
 			</Container>
 		</div>
