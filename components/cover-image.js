@@ -6,16 +6,16 @@ import { urlForImage } from '../lib/sanity'
 export default function CoverImage({ title, slug, image: source, priority }) {
   const image = source?.asset?._ref ? (
     <div
-      className={cn('shadow-small', {
+      className={cn('shadow-small h-full object-cover', {
         'hover:shadow-medium transition-shadow duration-200': slug,
       })}
     >
       <Image
         className="w-full h-auto"
-        width={2000}
-        height={1000}
+        width={340}
+        height={240}
         alt={`Cover Image for ${title}`}
-        src={urlForImage(source).height(1000).width(2000).url()}
+        src={urlForImage(source).height(240).width(340).url()}
         sizes="100vw"
         priority={priority}
       />
