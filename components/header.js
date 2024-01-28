@@ -7,15 +7,12 @@ import {
 	Sheet,
 	SheetClose,
 	SheetContent,
-	SheetDescription,
-	SheetHeader,
-	SheetTitle,
 	SheetTrigger,
 } from "@/components/ui/sheet";
 
 export default function Header() {
 	return (
-		<div className="bg-card sm:py-6 py-4">
+		<div className="bg-card py-4">
 			<Container>
 				<div className="flex justify-between items-center">
 					<Link href={"/"}>
