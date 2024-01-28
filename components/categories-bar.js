@@ -2,7 +2,7 @@ import { ToggleGroup, ToggleGroupItem } from "./ui/toggle-group";
 
 export default function CategoriesBar({ allCategories }) {
 	return (
-		<div className="py-4 sm:py-10 sticky top-0 bg-background">
+		<div className="py-4 sm:py-10 sticky top-0 bg-background z-50">
 			<div className="max-w-max mx-auto">
 				<ToggleGroup
 					defaultValue="explore"
