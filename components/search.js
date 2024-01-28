@@ -12,7 +12,7 @@ export default function Search() {
 			<Input
 				type="search"
 				placeholder="Search your topic"
-				className="rounded-lg px-10 py-3 w-80 border-foreground border-[1.5px] border-solid"
+				className="rounded-lg px-10 py-3 min-w-full sm:min-w-80  border-foreground border-[1.5px] border-solid"
 			/>
 			<Icon
 				name="mic"
