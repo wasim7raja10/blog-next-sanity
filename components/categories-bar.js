@@ -6,7 +6,7 @@ export default function CategoriesBar({ allCategories }) {
 			<div className="max-w-max mx-auto">
 				<ToggleGroup
 					defaultValue="explore"
-					className="justify-start gap-6 overflow-auto"
+					className="justify-start gap-6 overflow-auto no-scrollbar"
 					type="single"
 				>
 					<ToggleGroupItem value="explore">Explore</ToggleGroupItem>
