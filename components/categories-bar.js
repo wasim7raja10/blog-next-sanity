@@ -2,8 +2,11 @@ import { ToggleGroup, ToggleGroupItem } from "./ui/toggle-group";
 
 export default function CategoriesBar({ allCategories }) {
 	return (
-		<div className="py-10">
-			<ToggleGroup type="single">
+		<div className="max-w-max mx-auto py-10">
+			<ToggleGroup
+				className="justify-start gap-6 overflow-auto"
+				type="single"
+			>
 				{allCategories.map((it) => (
 					<ToggleGroupItem value={it.slug}>{it.name}</ToggleGroupItem>
 				))}
