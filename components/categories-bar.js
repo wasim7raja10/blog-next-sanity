@@ -6,13 +6,15 @@ export default function CategoriesBar({ allCategories }) {
 			<div className="max-w-max mx-auto">
 				<ToggleGroup
 					defaultValue="explore"
-					className="justify-start gap-6 overflow-auto no-scrollbar"
+					className="justify-start gap-3 sm:gap-6 overflow-auto no-scrollbar"
 					type="single"
-          size="sm"
+					size="sm"
 				>
 					<ToggleGroupItem value="explore">Explore</ToggleGroupItem>
 					{allCategories.map((it) => (
-						<ToggleGroupItem value={it.slug}>{it.name}</ToggleGroupItem>
+						<ToggleGroupItem key={it.slug} value={it.slug}>
+							{it.name}
+						</ToggleGroupItem>
 					))}
 				</ToggleGroup>
 			</div>

@@ -16,16 +16,29 @@ export default function Landing({ allPosts, allCategories, preview }) {
 				</Head>
 				<Container>
 					{allCategories && <CategoriesBar allCategories={allCategories} />}
-					{heroPost && (
-						<HeroPost
-							title={heroPost.title}
-							coverImage={heroPost.coverImage}
-							date={heroPost.date}
-							author={heroPost.author}
-							slug={heroPost.slug}
-							excerpt={heroPost.excerpt}
-						/>
-					)}
+					<div className="flex flex-col gap-4">
+						{heroPost && (
+							<HeroPost
+								title={heroPost.title}
+								coverImage={heroPost.coverImage}
+								date={heroPost.date}
+								author={heroPost.author}
+								slug={heroPost.slug}
+								excerpt={heroPost.excerpt}
+							/>
+						)}
+						{heroPost && (
+							<HeroPost
+								title={heroPost.title}
+								coverImage={heroPost.coverImage}
+								date={heroPost.date}
+								author={heroPost.author}
+								slug={heroPost.slug}
+								excerpt={heroPost.excerpt}
+								isSmall={true}
+							/>
+						)}
+					</div>
 					{morePosts.length > 0 && <MoreStories posts={morePosts} />}
 				</Container>
 			</Layout>
