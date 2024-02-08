@@ -4,7 +4,7 @@ import PostTitle from "../components/post-title";
 
 export default function PostHeader({ title, coverImage, date, author }) {
 	return (
-		<div className="pb-8 md:pb-14 pt-20 space-y-4">
+		<div className="pb-8 md:pb-14 space-y-4 max-w-[730px]">
 			<PostTitle>{title}</PostTitle>
 			<div className="flex items-center gap-2 font-medium text-card-foreground-secondary text-sm">
 				{author && <Avatar name={author.name} picture={author.picture} />}
