@@ -15,7 +15,7 @@ export default function CoverImage({ title, slug, image: source, priority }) {
 			/>
 		</div>
 	) : (
-		<div style={{ paddingTop: "50%", backgroundColor: "#ddd" }} />
+		<div className="bg-[#ddd] w-full h-full" />
 	);
 
 	return <>{image}</>;
