@@ -5,7 +5,7 @@ import Layout from './layout'
 import Container from './container'
 import PostTitle from './post-title'
 import Head from 'next/head'
-import { CMS_NAME } from '../lib/constants'
+import { BRAND_NAME, CMS_NAME } from '../lib/constants'
 import PostHeader from './post-header'
 import PostBody from './post-body'
 import SectionSeparator from './section-separator'
@@ -28,10 +28,10 @@ export default function Post({ data = {}, preview = false }) {
           <PostTitle>Loading…</PostTitle>
         ) : (
           <>
-            <article>
+            <article className=''>
               <Head>
                 <title>
-                  {`${post.title} | Next.js Blog Example with ${CMS_NAME}`}
+                  {`${post.title} | ${BRAND_NAME}`}
                 </title>
                 {post.coverImage?.asset?._ref && (
                   <meta
