@@ -43,11 +43,11 @@ export default function Post({ data = {}, preview = false }) {
 									/>
 								)}
 							</Head>
-							<div className="flex">
-								<div className="w-60">
+							<div className="lg:flex">
+								<div className="w-60 hidden lg:block">
 									<div className="top-2 sticky max-h-max">top-2 sticky</div>
 								</div>
-								<div className="px-8 pt-10 flex-1">
+								<div className="sm:px-8 pt-10 flex-1">
 									<PostHeader
 										title={post.title}
 										coverImage={post.coverImage}
@@ -56,7 +56,7 @@ export default function Post({ data = {}, preview = false }) {
 									/>
 									<PostBody content={post.content} />
 								</div>
-								<div className="w-60">
+								<div className="w-60 hidden lg:block">
 									<div className="top-2 sticky max-h-max">top-2 sticky</div>
 								</div>
 							</div>
