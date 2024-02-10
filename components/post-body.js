@@ -1,6 +1,7 @@
 import { PortableText } from "@portabletext/react";
 import { getImageDimensions } from "@sanity/asset-utils";
 import { urlForImage } from "@/lib/sanity";
+import { cn } from "@/lib/utils";
 
 export default function PostBody({ content }) {
 	return (
@@ -17,10 +18,8 @@ const ImageComponent = ({ value, isInline }) => {
 			src={urlForImage(value)}
 			alt={value.alt || " "}
 			loading="lazy"
-			style={{
-				display: isInline ? "inline-block" : "block",
-				aspectRatio: width / height,
-			}}
+			style={{ aspectRatio: width / height }}
+			className={cn("block mx-auto", { "inline-block": isInline })}
 		/>
 	);
 };
