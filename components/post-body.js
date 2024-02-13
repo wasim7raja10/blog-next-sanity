@@ -12,25 +12,6 @@ export default function PostBody({ content }) {
 	);
 }
 
-const ImageComponent = ({ value, isInline }) => {
-	const { width, height } = getImageDimensions(value);
-	return (
-		<img
-			src={urlForImage(value)}
-			alt={value.alt || " "}
-			loading="lazy"
-			style={{ aspectRatio: width / height }}
-			className={cn("block mx-auto", { "inline-block": isInline })}
-		/>
-	);
-};
-
-const LinkableHeader = ({ children, value, level }) => {
-	const slug = getSlug(toPlainText(value));
-	const Element = `h${level}`;
-	return <Element id={slug}>{children}</Element>;
-};
-
 const components = {
 	types: {
 		image: ImageComponent,
@@ -62,4 +43,23 @@ const components = {
 			</LinkableHeader>
 		),
 	},
+};
+
+const ImageComponent = ({ value, isInline }) => {
+	const { width, height } = getImageDimensions(value);
+	return (
+		<img
+			src={urlForImage(value)}
+			alt={value.alt || " "}
+			loading="lazy"
+			style={{ aspectRatio: width / height }}
+			className={cn("block mx-auto", { "inline-block": isInline })}
+		/>
+	);
+};
+
+const LinkableHeader = ({ children, value, level }) => {
+	const slug = getSlug(toPlainText(value));
+	const Element = `h${level}`;
+	return <Element id={slug}>{children}</Element>;
 };
