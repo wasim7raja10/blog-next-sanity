@@ -11,7 +11,6 @@ import PostBody from "./post-body";
 import SectionSeparator from "./section-separator";
 import MoreStories from "./more-stories";
 import ContentOutline from "./content-outline";
-import parseOutline from "@/lib/parse-outline";
 
 export default function Post({ data = {}, preview = false }) {
 	const router = useRouter();
@@ -22,8 +21,6 @@ export default function Post({ data = {}, preview = false }) {
 	if (!router.isFallback && !slug) {
 		return <ErrorPage statusCode={404} />;
 	}
-
-	const outline = parseOutline(post.content);
 
 	return (
 		<Layout preview={preview}>
@@ -51,7 +48,7 @@ export default function Post({ data = {}, preview = false }) {
 								<div className="w-60 hidden lg:block">
 									{/* Content & Related article */}
 									<div className="py-2 top-0 sticky max-h-max">
-										<ContentOutline outline={outline} />
+										<ContentOutline />
 									</div>
 								</div>
 								<div className="sm:px-8 pt-10 flex-1">
