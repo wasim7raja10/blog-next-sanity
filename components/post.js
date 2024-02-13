@@ -29,7 +29,7 @@ export default function Post({ data = {}, preview = false }) {
 					<PostTitle>Loading…</PostTitle>
 				) : (
 					<>
-						<article className="">
+						<main className="">
 							<Head>
 								<title>{`${post.title} | ${BRAND_NAME}`}</title>
 								{post.coverImage?.asset?._ref && (
@@ -45,29 +45,35 @@ export default function Post({ data = {}, preview = false }) {
 								)}
 							</Head>
 							<div className="lg:flex">
-								<div className="w-60 hidden lg:block">
-									{/* Content & Related article */}
-									<div className="py-2 top-0 sticky max-h-max">
-										<ContentOutline />
+								<div className="flex-1">
+									<div className="flex">
+										<aside className="w-60 hidden lg:block border">
+											{/* Content & Related article */}
+											<div className="py-2 top-0 sticky max-h-max">
+												<ContentOutline />
+											</div>
+										</aside>
+										<article className="sm:px-8 pt-10 flex-1 border">
+											<PostHeader
+												title={post.title}
+												coverImage={post.coverImage}
+												date={post.date}
+												author={post.author}
+											/>
+											<PostBody content={post.content} />
+										</article>
+									</div>
+									<div className="border">
+										<SectionSeparator />
+										{morePosts.length > 0 && <MoreStories posts={morePosts} />}
 									</div>
 								</div>
-								<div className="sm:px-8 pt-10 flex-1">
-									<PostHeader
-										title={post.title}
-										coverImage={post.coverImage}
-										date={post.date}
-										author={post.author}
-									/>
-									<PostBody content={post.content} />
-								</div>
-								<div className="w-60 hidden lg:block">
+								<aside className="w-60 hidden lg:block border">
 									{/* Ad */}
 									<div className="py-2 top-0 sticky max-h-max"></div>
-								</div>
+								</aside>
 							</div>
-						</article>
-						<SectionSeparator />
-						{morePosts.length > 0 && <MoreStories posts={morePosts} />}
+						</main>
 					</>
 				)}
 			</Container>
