@@ -25,10 +25,10 @@ const ImageComponent = ({ value, isInline }) => {
 	);
 };
 
-const LinkableHeader = ({ children, value }) => {
-	// `value` is the single Portable Text block of this header
+const LinkableHeader = ({ children, value, level }) => {
 	const slug = getSlug(toPlainText(value));
-	return <h2 id={slug}>{children}</h2>;
+	const Element = `h${level}`;
+	return <Element id={slug}>{children}</Element>;
 };
 
 const components = {
@@ -36,10 +36,30 @@ const components = {
 		image: ImageComponent,
 	},
 	block: {
-		h2: LinkableHeader,
-		h3: LinkableHeader,
-		h4: LinkableHeader,
-		h5: LinkableHeader,
-		h6: LinkableHeader,
+		h2: ({ children, value }) => (
+			<LinkableHeader level={2} value={value}>
+				{children}
+			</LinkableHeader>
+		),
+		h3: ({ children, value }) => (
+			<LinkableHeader level={3} value={value}>
+				{children}
+			</LinkableHeader>
+		),
+		h4: ({ children, value }) => (
+			<LinkableHeader level={4} value={value}>
+				{children}
+			</LinkableHeader>
+		),
+		h5: ({ children, value }) => (
+			<LinkableHeader level={5} value={value}>
+				{children}
+			</LinkableHeader>
+		),
+		h6: ({ children, value }) => (
+			<LinkableHeader level={6} value={value}>
+				{children}
+			</LinkableHeader>
+		),
 	},
 };
