@@ -7,6 +7,7 @@ export default function MoreStories({ posts }) {
 			<div className="grid grid-cols-2 gap-10">
 				{posts.map((post) => (
 					<HeroPost
+						key={post.slug}
 						isSmall
 						title={post.title}
 						coverImage={post.coverImage}
