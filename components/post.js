@@ -8,9 +8,9 @@ import Head from "next/head";
 import { BRAND_NAME } from "../lib/constants";
 import PostHeader from "./post-header";
 import PostBody from "./post-body";
-import SectionSeparator from "./section-separator";
 import MoreStories from "./more-stories";
 import ContentOutline from "./content-outline";
+import { Separator } from "./ui/separator";
 
 export default function Post({ data = {}, preview = false }) {
 	const router = useRouter();
@@ -47,13 +47,13 @@ export default function Post({ data = {}, preview = false }) {
 							<div className="lg:flex">
 								<div className="flex-1">
 									<div className="flex">
-										<aside className="w-60 hidden lg:block border">
+										<aside className="w-60 hidden lg:block ">
 											{/* Content & Related article */}
 											<div className="py-2 top-0 sticky max-h-max">
 												<ContentOutline />
 											</div>
 										</aside>
-										<article className="sm:px-8 pt-10 flex-1 border">
+										<article className="sm:px-8 pt-10 flex-1 ">
 											<PostHeader
 												title={post.title}
 												coverImage={post.coverImage}
@@ -63,14 +63,14 @@ export default function Post({ data = {}, preview = false }) {
 											<PostBody content={post.content} />
 										</article>
 									</div>
-									<div className="border">
-										<SectionSeparator />
+									<div className="">
+										<Separator className="my-10" />
 										{morePosts.length > 0 && <MoreStories posts={morePosts} />}
 									</div>
 								</div>
-								<aside className="w-60 hidden lg:block border">
+								<aside className="w-60 hidden lg:block ">
 									{/* Ad */}
-									<div className="py-2 top-0 sticky max-h-max"></div>
+									<div className="py-2 top-0 sticky h-[90vh] bg-black"></div>
 								</aside>
 							</div>
 						</main>
