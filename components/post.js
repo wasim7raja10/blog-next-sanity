@@ -63,7 +63,7 @@ export default function Post({ data = {}, preview = false }) {
 											<PostBody content={post.content} />
 										</article>
 									</div>
-									<div className="pr-10 py-36">
+									<div className="sm:pr-10 pr-0 sm:py-36 py-16">
 										<Separator className="mb-16" />
 										{morePosts.length > 0 && <MoreStories posts={morePosts} />}
 									</div>
