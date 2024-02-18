@@ -12,6 +12,7 @@ import MoreStories from "./more-stories";
 import ContentOutline from "./content-outline";
 import { Separator } from "./ui/separator";
 import Link from "next/link";
+import ArticleBar from "./article-bar";
 
 export default function Post({ data = {}, preview = false }) {
 	const router = useRouter();
@@ -66,13 +67,14 @@ export default function Post({ data = {}, preview = false }) {
 												</ul>
 											</div>
 										</aside>
-										<article className="sm:mx-16 flex-1 max-w-[730px]">
+										<article className="sm:mx-16 flex-1 max-w-[730px] space-y-8">
 											<PostHeader
 												title={post.title}
 												coverImage={post.coverImage}
 												date={post.date}
 												author={post.author}
 											/>
+											<ArticleBar />
 											<PostBody content={post.content} />
 										</article>
 									</div>
