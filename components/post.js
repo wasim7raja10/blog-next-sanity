@@ -49,7 +49,7 @@ export default function Post({ data = {}, preview = false }) {
 									<div className="flex">
 										<aside className="w-60 hidden xl:block ">
 											{/* Content & Related article */}
-											<div className="py-2 top-0 sticky max-h-max">
+											<div className="py-2 max-h-max">
 												<ContentOutline />
 											</div>
 										</aside>
@@ -70,7 +70,7 @@ export default function Post({ data = {}, preview = false }) {
 								</div>
 								<aside className="w-60 hidden xl:block ">
 									{/* Ad */}
-									<div className="py-2 top-0 sticky h-[90vh] bg-black"></div>
+									<div className="py-2 h-[90vh] bg-black"></div>
 								</aside>
 							</div>
 						</main>
