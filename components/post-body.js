@@ -1,8 +1,4 @@
-import { getImageDimensions } from "@sanity/asset-utils";
-import { urlForImage } from "@/lib/sanity";
-import { cn } from "@/lib/utils";
-import { PortableText, toPlainText } from "@portabletext/react";
-import getSlug from "speakingurl";
+import { PortableText } from "@portabletext/react";
 import components from "@/lib/portable-text";
 
 export default function PostBody({ content }) {
