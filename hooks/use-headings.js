@@ -3,7 +3,11 @@ import { useEffect, useState } from "react";
 export default function useHeadings() {
 	const [headings, setHeadings] = useState([]);
 	useEffect(() => {
-		const elements = Array.from(document.querySelectorAll("h2, h3, h4, h5, h6"))
+		const elements = Array.from(
+			document.querySelectorAll(
+				"article h2, article h3, article h4, article h5, article h6"
+			)
+		)
 			.filter((element) => element.id)
 			.map((element) => ({
 				id: element.id,

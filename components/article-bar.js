@@ -1,11 +1,17 @@
 import { Bookmark, Heart, Link, List, Share2 } from "lucide-react";
 import { Separator } from "./ui/separator";
 import { Button } from "./ui/button";
+import { Tooltip, TooltipContent, TooltipTrigger } from "./ui/tooltip";
 import {
-	Tooltip,
-	TooltipContent,
-	TooltipTrigger,
-} from "./ui/tooltip";
+	Dialog,
+	DialogContent,
+	DialogDescription,
+	DialogFooter,
+	DialogHeader,
+	DialogTitle,
+	DialogTrigger,
+} from "@/components/ui/dialog";
+import ContentOutline from "./content-outline";
 
 export default function ArticleBar() {
 	return (
@@ -36,16 +42,27 @@ export default function ArticleBar() {
 
 			<Separator orientation="vertical" className="h-6" />
 
-			<Tooltip>
-				<TooltipTrigger asChild>
-					<Button variant="ghost" size="icon">
-						<List />
-					</Button>
-				</TooltipTrigger>
-				<TooltipContent>
-					<p>Content outline</p>
-				</TooltipContent>
-			</Tooltip>
+			<Dialog>
+				<Tooltip>
+					<TooltipTrigger asChild>
+						<DialogTrigger asChild>
+							<Button variant="ghost" size="icon">
+								<List />
+							</Button>
+						</DialogTrigger>
+					</TooltipTrigger>
+					<TooltipContent>
+						<p>Content outline</p>
+					</TooltipContent>
+				</Tooltip>
+
+				<DialogContent className="sm:max-w-[425px]">
+					<DialogHeader>
+						<DialogTitle>Content Outline</DialogTitle>
+					</DialogHeader>
+					<ContentOutline />
+				</DialogContent>
+			</Dialog>
 
 			<Separator orientation="vertical" className="h-6" />
 
