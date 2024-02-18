@@ -1,5 +1,3 @@
-import { BRAND_NAME } from "@/lib/constants";
-
 export default function Brand() {
 	return (
 		<svg
