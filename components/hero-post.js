@@ -17,7 +17,7 @@ export default function HeroPost({
 		<Link href={`/posts/${slug}`}>
 			<div
 				className={cn(
-					"bg-card max-w-[340px] rounded-md overflow-hidden space-y-3",
+					"bg-card max-w-[340px] rounded-md overflow-hidden space-y-3 hover:shodow hover:shadow-lg",
 					{
 						"flex max-w-full space-y-0": isSmall,
 					}

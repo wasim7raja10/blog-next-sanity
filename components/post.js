@@ -47,7 +47,7 @@ export default function Post({ data = {}, preview = false }) {
 							<div className="lg:flex">
 								<div className="flex-1">
 									<div className="flex">
-										<aside className="w-60 hidden lg:block ">
+										<aside className="w-60 hidden xl:block ">
 											{/* Content & Related article */}
 											<div className="py-2 top-0 sticky max-h-max">
 												<ContentOutline />
@@ -63,12 +63,12 @@ export default function Post({ data = {}, preview = false }) {
 											<PostBody content={post.content} />
 										</article>
 									</div>
-									<div className="sm:pr-10 pr-0 sm:py-36 py-16">
+									<div className="lg:pr-10 pr-0 sm:py-36 py-16">
 										<Separator className="mb-16" />
 										{morePosts.length > 0 && <MoreStories posts={morePosts} />}
 									</div>
 								</div>
-								<aside className="w-60 hidden lg:block ">
+								<aside className="w-60 hidden xl:block ">
 									{/* Ad */}
 									<div className="py-2 top-0 sticky h-[90vh] bg-black"></div>
 								</aside>

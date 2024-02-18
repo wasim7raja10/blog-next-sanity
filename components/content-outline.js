@@ -11,6 +11,7 @@ function ContentOutline() {
 					<li
 						key={heading.id}
 						style={{ marginLeft: `${(maxLevel - heading.level) * 1}em` }}
+						className="hover:font-bold text-md"
 					>
 						<a href={`#${heading.id}`}>{heading.text}</a>
 					</li>

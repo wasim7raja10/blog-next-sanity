@@ -27,8 +27,6 @@ export async function getStaticProps({ params, preview = false }) {
 		slug: params.slug,
 	});
 
-	console.log(morePosts);
-
 	return {
 		props: {
 			preview,
