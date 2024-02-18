@@ -11,6 +11,7 @@ import PostBody from "./post-body";
 import MoreStories from "./more-stories";
 import ContentOutline from "./content-outline";
 import { Separator } from "./ui/separator";
+import Link from "next/link";
 
 export default function Post({ data = {}, preview = false }) {
 	const router = useRouter();
@@ -45,15 +46,27 @@ export default function Post({ data = {}, preview = false }) {
 								)}
 							</Head>
 							<div className="lg:flex">
-								<div className="flex-1">
+								<div className="flex-1 pt-6">
 									<div className="flex">
-										<aside className="w-60 hidden xl:block ">
+										<aside className="w-64 hidden xl:block">
 											{/* Content & Related article */}
 											<div className="py-2 max-h-max">
-												<ContentOutline />
+												<h2 className="font-semibold pb-4 underline">
+													Related articles:
+												</h2>
+												<ul className="space-y-3">
+													{morePosts.map((it) => (
+														<li
+															key={it.slug}
+															className="font-medium hover:font-bold"
+														>
+															<Link href={it.slug}>{it.title}</Link>
+														</li>
+													))}
+												</ul>
 											</div>
 										</aside>
-										<article className="sm:px-8 pt-10 flex-1 ">
+										<article className="sm:mx-16 flex-1 max-w-[730px]">
 											<PostHeader
 												title={post.title}
 												coverImage={post.coverImage}
@@ -64,9 +77,9 @@ export default function Post({ data = {}, preview = false }) {
 										</article>
 									</div>
 								</div>
-								<aside className="w-60 hidden xl:block ">
+								<aside className="w-60 hidden lg:block pt-6">
 									{/* Ad */}
-									<div className="py-2 h-[90vh] bg-black mt-10"></div>
+									<div className="py-2 h-[90vh] bg-black"></div>
 								</aside>
 							</div>
 							<div className="sm:py-36 py-16">
