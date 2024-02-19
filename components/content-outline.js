@@ -1,4 +1,5 @@
 import useHeadings from "@/hooks/use-headings";
+import { DialogClose } from "./ui/dialog";
 
 function ContentOutline() {
 	const headings = useHeadings();
@@ -11,9 +12,16 @@ function ContentOutline() {
 					<li
 						key={heading.id}
 						style={{ marginLeft: `${(maxLevel - heading.level) * 1}em` }}
-						className="hover:font-bold text-md hover:bg-accent p-2"
+						className="hover:font-bold text-md hover:bg-accent "
 					>
-						<a href={`#${heading.id}`}>{heading.text}</a>
+						<DialogClose asChild>
+							<a
+								href={`#${heading.id}`}
+								className="w-full h-full inline-block p-2"
+							>
+								{heading.text}
+							</a>
+						</DialogClose>
 					</li>
 				))}
 			</ul>

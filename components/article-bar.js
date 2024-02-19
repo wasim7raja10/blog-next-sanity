@@ -4,14 +4,14 @@ import { Button } from "./ui/button";
 import { Tooltip, TooltipContent, TooltipTrigger } from "./ui/tooltip";
 import {
 	Dialog,
+	DialogClose,
 	DialogContent,
-	DialogDescription,
-	DialogFooter,
 	DialogHeader,
 	DialogTitle,
 	DialogTrigger,
 } from "@/components/ui/dialog";
 import ContentOutline from "./content-outline";
+import { ScrollArea } from "./ui/scroll-area";
 
 export default function ArticleBar() {
 	return (
@@ -56,11 +56,13 @@ export default function ArticleBar() {
 					</TooltipContent>
 				</Tooltip>
 
-				<DialogContent className="sm:max-w-[425px]">
+				<DialogContent className="sm:max-w-[630px] max-w-[90%] rounded-lg">
 					<DialogHeader>
-						<DialogTitle>Content Outline</DialogTitle>
+						<DialogTitle className="sm:px-2">Content Outline</DialogTitle>
 					</DialogHeader>
-					<ContentOutline />
+					<ScrollArea className="max-h-[400px]">
+						<ContentOutline />
+					</ScrollArea>
 				</DialogContent>
 			</Dialog>
 
