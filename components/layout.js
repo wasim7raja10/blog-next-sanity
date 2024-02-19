@@ -4,6 +4,7 @@ import { cn } from "@/lib/utils";
 import Header from "./header";
 import Footer from "../components/footer";
 import Meta from "../components/meta";
+import { TooltipProvider } from "./ui/tooltip";
 
 export const fontSans = FontSans({
 	subsets: ["latin"],
@@ -15,16 +16,18 @@ export default function Layout({ preview, children }) {
 	return (
 		<>
 			<Meta />
-			<div
-				className={cn(
-					"min-h-screen bg-background font-sans antialiased",
-					fontSans.variable
-				)}
-			>
-				<Header />
-				<main>{children}</main>
-			</div>
-			<Footer />
+			<TooltipProvider delayDuration={0}>
+				<div
+					className={cn(
+						"min-h-screen bg-background font-sans antialiased",
+						fontSans.variable
+					)}
+				>
+					<Header />
+					<main>{children}</main>
+				</div>
+				<Footer />
+			</TooltipProvider>
 		</>
 	);
 }

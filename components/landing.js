@@ -39,7 +39,7 @@ export default function Landing({ allPosts, allCategories, preview }) {
 							/>
 						)}
 					</div>
-					{morePosts.length > 0 && <MoreStories posts={morePosts} />}
+					{/* {morePosts.length > 0 && <MoreStories posts={morePosts} />} */}
 				</Container>
 			</Layout>
 		</>

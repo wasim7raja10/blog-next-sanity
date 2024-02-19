@@ -8,8 +8,11 @@ import Head from "next/head";
 import { BRAND_NAME } from "../lib/constants";
 import PostHeader from "./post-header";
 import PostBody from "./post-body";
-import SectionSeparator from "./section-separator";
 import MoreStories from "./more-stories";
+import ContentOutline from "./content-outline";
+import { Separator } from "./ui/separator";
+import Link from "next/link";
+import ArticleBar from "./article-bar";
 
 export default function Post({ data = {}, preview = false }) {
 	const router = useRouter();
@@ -28,7 +31,7 @@ export default function Post({ data = {}, preview = false }) {
 					<PostTitle>Loading…</PostTitle>
 				) : (
 					<>
-						<article className="">
+						<main className="">
 							<Head>
 								<title>{`${post.title} | ${BRAND_NAME}`}</title>
 								{post.coverImage?.asset?._ref && (
@@ -44,27 +47,48 @@ export default function Post({ data = {}, preview = false }) {
 								)}
 							</Head>
 							<div className="lg:flex">
-								<div className="w-60 hidden lg:block">
-									{/* Content & Related article */}
-									<div className="py-2 top-0 sticky max-h-max"></div>
+								<div className="flex-1 pt-6">
+									<div className="flex">
+										<aside className="w-64 hidden xl:block">
+											{/* Content & Related article */}
+											<div className="py-2 max-h-max">
+												<h2 className="font-semibold pb-4 underline">
+													Related articles:
+												</h2>
+												<ul className="space-y-3">
+													{morePosts.map((it) => (
+														<li
+															key={it.slug}
+															className="font-medium hover:font-bold"
+														>
+															<Link href={it.slug}>{it.title}</Link>
+														</li>
+													))}
+												</ul>
+											</div>
+										</aside>
+										<article className="sm:mx-16 flex-1 max-w-[730px] space-y-8">
+											<PostHeader
+												title={post.title}
+												coverImage={post.coverImage}
+												date={post.date}
+												author={post.author}
+											/>
+											<ArticleBar />
+											<PostBody content={post.content} />
+										</article>
+									</div>
 								</div>
-								<div className="sm:px-8 pt-10 flex-1">
-									<PostHeader
-										title={post.title}
-										coverImage={post.coverImage}
-										date={post.date}
-										author={post.author}
-									/>
-									<PostBody content={post.content} />
-								</div>
-								<div className="w-60 hidden lg:block">
+								<aside className="w-60 hidden lg:block pt-6">
 									{/* Ad */}
-									<div className="py-2 top-0 sticky max-h-max"></div>
-								</div>
+									<div className="py-2 h-[90vh] bg-black"></div>
+								</aside>
 							</div>
-						</article>
-						<SectionSeparator />
-						{morePosts.length > 0 && <MoreStories posts={morePosts} />}
+							<div className="sm:py-36 py-16">
+								<Separator className="mb-16" />
+								{morePosts.length > 0 && <MoreStories posts={morePosts} />}
+							</div>
+						</main>
 					</>
 				)}
 			</Container>
