@@ -1,3 +1,5 @@
+"use client";
+
 import useHeadings from "@/hooks/use-headings";
 import { DialogClose } from "./ui/dialog";
 
