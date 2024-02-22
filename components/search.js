@@ -1,11 +1,11 @@
+import { Mic, SearchIcon } from "lucide-react";
 import Icon from "./icon";
 import { Input } from "./ui/input";
 
 export default function Search() {
 	return (
 		<div className="relative">
-			<Icon
-				name="search"
+			<SearchIcon
 				size={20}
 				className="absolute left-2 top-0 transform translate-y-1/2"
 			/>
@@ -14,8 +14,7 @@ export default function Search() {
 				placeholder="Search your topic"
 				className="rounded-lg px-10 py-3 min-w-full sm:min-w-80  border-foreground border-[1.5px] border-solid"
 			/>
-			<Icon
-				name="mic"
+			<Mic
 				size={20}
 				className="absolute right-2 top-0 transform translate-y-1/2 cursor-pointer"
 			/>
