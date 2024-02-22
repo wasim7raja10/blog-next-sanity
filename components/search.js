@@ -1,5 +1,4 @@
 import { Mic, SearchIcon } from "lucide-react";
-import Icon from "./icon";
 import { Input } from "./ui/input";
 
 export default function Search() {
