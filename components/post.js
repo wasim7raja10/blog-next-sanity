@@ -1,7 +1,4 @@
-"use client";
-
 import Container from "./container";
-import Link from "next/link";
 import PostHeader from "./post-header";
 import ArticleBar from "./article-bar";
 import PostBody from "./post-body";
@@ -46,7 +43,7 @@ export default function Post({ data = {} }) {
 								<aside className="w-64 hidden xl:block">
 									{/* Content & Related article */}
 									<div className="py-2 max-h-max">
-										<RelatedArticles category={post?.categories[0]} />
+										<RelatedArticles categories={post.categories} />
 									</div>
 								</aside>
 								<article className="sm:mx-16 flex-1 max-w-[730px] space-y-8">
@@ -57,7 +54,7 @@ export default function Post({ data = {} }) {
 										author={post.author}
 									/>
 									<ArticleBar />
-									<PostBody content={post.content} />
+									<PostBody post={post} />
 								</article>
 							</div>
 						</div>
