@@ -30,6 +30,7 @@ export default function Post({ data = {} }) {
 									coverImage={post.coverImage}
 									date={post.date}
 									author={post.author}
+									categories={post.categories}
 								/>
 								<ArticleBar />
 								<PostBody post={post} />

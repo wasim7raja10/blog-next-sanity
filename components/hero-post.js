@@ -3,6 +3,7 @@ import Date from "../components/date";
 import CoverImage from "../components/cover-image";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
+import { Badge } from "./ui/badge";
 
 export default function HeroPost({
 	title,
@@ -12,7 +13,7 @@ export default function HeroPost({
 	author,
 	slug,
 	isSmall,
-	category
+	category,
 }) {
 	return (
 		<Link href={`/posts/${slug}`}>
@@ -26,6 +27,7 @@ export default function HeroPost({
 			>
 				<div
 					className={cn(
+						"relative",
 						{ "h-60 w-full": !isSmall },
 						{
 							"sm:min-h-[150px] min-h-[94px] sm:min-w-[192px] min-w-[120px]":
@@ -34,6 +36,7 @@ export default function HeroPost({
 					)}
 				>
 					<CoverImage slug={slug} title={title} image={coverImage} priority />
+					<Badge className="absolute bottom-2 right-2">#{category.name}</Badge>
 				</div>
 				<div
 					className={cn("px-4 pb-4 space-y-4 w-full", {
