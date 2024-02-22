@@ -43,7 +43,7 @@ export default function Post({ data = {} }) {
 								<aside className="w-64 hidden xl:block">
 									{/* Content & Related article */}
 									<div className="py-2 max-h-max">
-										<RelatedArticles categories={post.categories} />
+										<RelatedArticles categories={post.categories} excludedSlug={post.slug} />
 									</div>
 								</aside>
 								<article className="sm:mx-16 flex-1 max-w-[730px] space-y-8">
