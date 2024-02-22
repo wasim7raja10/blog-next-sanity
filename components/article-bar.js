@@ -9,15 +9,17 @@ import {
 	TooltipProvider,
 	TooltipTrigger,
 } from "./ui/tooltip";
-// import {
-// 	Dialog,
-// 	DialogContent,
-// 	DialogHeader,
-// 	DialogTitle,
-// 	DialogTrigger,
-// } from "@/components/ui/dialog";
-// import ContentOutline from "./content-outline";
-// import { ScrollArea } from "./ui/scroll-area";
+import {
+	Dialog,
+	DialogContent,
+	DialogDescription,
+	DialogHeader,
+	DialogTitle,
+	DialogTrigger,
+} from "@/components/ui/dialog";
+
+import ContentOutline from "./content-outline";
+import { ScrollArea } from "./ui/scroll-area";
 
 export default function ArticleBar() {
 	return (
@@ -33,7 +35,6 @@ export default function ArticleBar() {
 						<p>Like</p>
 					</TooltipContent>
 				</Tooltip>
-
 				<Separator orientation="vertical" className="h-6" />
 
 				<Tooltip>
@@ -46,10 +47,9 @@ export default function ArticleBar() {
 						<p>Bookmark</p>
 					</TooltipContent>
 				</Tooltip>
-
 				<Separator orientation="vertical" className="h-6" />
 
-				{/* <Dialog>
+				<Dialog>
 					<Tooltip>
 						<TooltipTrigger asChild>
 							<DialogTrigger asChild>
@@ -62,7 +62,6 @@ export default function ArticleBar() {
 							<p>Content outline</p>
 						</TooltipContent>
 					</Tooltip>
-
 					<DialogContent className="sm:max-w-[630px] max-w-[90%] rounded-lg">
 						<DialogHeader>
 							<DialogTitle className="sm:px-2">Content Outline</DialogTitle>
@@ -71,8 +70,7 @@ export default function ArticleBar() {
 							<ContentOutline />
 						</ScrollArea>
 					</DialogContent>
-				</Dialog> */}
-
+				</Dialog>
 				<Separator orientation="vertical" className="h-6" />
 
 				<Tooltip>
@@ -85,7 +83,6 @@ export default function ArticleBar() {
 						<p>Copy link</p>
 					</TooltipContent>
 				</Tooltip>
-
 				<Separator orientation="vertical" className="h-6" />
 
 				<Tooltip>
@@ -101,4 +98,42 @@ export default function ArticleBar() {
 			</TooltipProvider>
 		</div>
 	);
+}
+
+{
+	/* <Dialog>ok</Dialog> */
+}
+{
+	/* <Dialog>
+					<DialogTrigger asChild>Trigger</DialogTrigger>
+					<DialogContent>Content</DialogContent>
+				</Dialog> */
+}
+{
+	/* <Dialog>
+					<Tooltip>
+						<TooltipTrigger asChild>
+							<DialogTrigger asChild>
+								<Button variant="ghost" size="icon">
+									<List />
+								</Button>
+							</DialogTrigger>
+						</TooltipTrigger>
+						<TooltipContent>
+							<p>Content outline</p>
+						</TooltipContent>
+					</Tooltip> */
+}
+{
+	/* <DialogContent className="sm:max-w-[630px] max-w-[90%] rounded-lg">
+						<DialogHeader>
+							<DialogTitle className="sm:px-2">Content Outline</DialogTitle>
+						</DialogHeader>
+						<ScrollArea className="max-h-[400px]">
+							<ContentOutline />
+						</ScrollArea>
+					</DialogContent> */
+}
+{
+	/* </Dialog> */
 }
