@@ -5,11 +5,14 @@ import Link from "next/link";
 import PostHeader from "./post-header";
 import ArticleBar from "./article-bar";
 import PostBody from "./post-body";
+import RelatedArticles from "./related-articles";
+import { Separator } from "./ui/separator";
+import MoreStories from "./more-stories";
 
 export default function Post({ data = {} }) {
 	// const router = useRouter();
 
-	const { post } = data;
+	const { post, morePosts } = data;
 	// const slug = post?.slug;
 
 	// if (!router.isFallback && !slug) {
@@ -43,19 +46,7 @@ export default function Post({ data = {} }) {
 								<aside className="w-64 hidden xl:block">
 									{/* Content & Related article */}
 									<div className="py-2 max-h-max">
-										<h2 className="font-semibold pb-4 underline">
-											Related articles:
-										</h2>
-										<ul className="space-y-3">
-											{/* {morePosts.map((it) => (
-												<li
-													key={it.slug}
-													className="font-medium hover:font-bold"
-												>
-													<Link href={it.slug}>{it.title}</Link>
-												</li>
-											))} */}
-										</ul>
+										<RelatedArticles category={post?.categories[0]} />
 									</div>
 								</aside>
 								<article className="sm:mx-16 flex-1 max-w-[730px] space-y-8">
@@ -76,8 +67,8 @@ export default function Post({ data = {} }) {
 						</aside>
 					</div>
 					<div className="sm:py-36 py-16">
-						{/* <Separator className="mb-16" /> */}
-						{/* {morePosts.length > 0 && <MoreStories posts={morePosts} />} */}
+						<Separator className="mb-16" />
+						{morePosts.length > 0 && <MoreStories posts={morePosts} />}
 					</div>
 				</main>
 			</>
