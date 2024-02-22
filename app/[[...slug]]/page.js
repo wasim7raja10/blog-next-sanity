@@ -41,6 +41,7 @@ export default async function Page({ params }) {
 						author={it.author}
 						slug={it.slug}
 						excerpt={it.excerpt}
+						category={it.categories[0]}
 					/>
 				))}
 		</div>

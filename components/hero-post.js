@@ -12,6 +12,7 @@ export default function HeroPost({
 	author,
 	slug,
 	isSmall,
+	category
 }) {
 	return (
 		<Link href={`/posts/${slug}`}>
