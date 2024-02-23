@@ -24,6 +24,7 @@ export default async function Page({ params }) {
 	if (category) {
 		posts = await sanityFetch({
 			query: postListByCategoryQuery,
+			qParams: { category },
 			tags: ["post"],
 		});
 	} else {

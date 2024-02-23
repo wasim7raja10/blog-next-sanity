@@ -5,43 +5,42 @@ import { NextResponse } from "next/server";
 import { parseBody } from "next-sanity/webhook";
 
 // Next.js will by default parse the body, which can lead to invalid signatures
-export const config = {
-	api: {
-		bodyParser: false,
-	},
-};
+// export const config = {
+// 	api: {
+// 		bodyParser: false,
+// 	},
+// };
 
-const AUTHOR_UPDATED_QUERY = /* groq */ `
-  *[_type == "author" && _id == $id] {
-    "slug": *[_type == "post" && references(^._id)].slug.current
-  }["slug"][]`;
-const POST_UPDATED_QUERY = /* groq */ `*[_type == "post" && _id == $id].slug.current`;
+// const AUTHOR_UPDATED_QUERY = /* groq */ `
+//   *[_type == "author" && _id == $id] {
+//     "slug": *[_type == "post" && references(^._id)].slug.current
+//   }["slug"][]`;
+// const POST_UPDATED_QUERY = /* groq */ `*[_type == "post" && _id == $id].slug.current`;
 
-const getQueryForType = (type) => {
-	switch (type) {
-		case "author":
-			return AUTHOR_UPDATED_QUERY;
-		case "post":
-			return POST_UPDATED_QUERY;
-		default:
-			throw new TypeError(`Unknown type: ${type}`);
-	}
-};
+// const getQueryForType = (type) => {
+// 	switch (type) {
+// 		case "author":
+// 			return AUTHOR_UPDATED_QUERY;
+// 		case "post":
+// 			return POST_UPDATED_QUERY;
+// 		default:
+// 			throw new TypeError(`Unknown type: ${type}`);
+// 	}
+// };
 
-const log = (msg, error) =>
-	console[error ? "error" : "log"](`[revalidate] ${msg}`);
+// const log = (msg, error) =>
+// 	console[error ? "error" : "log"](`[revalidate] ${msg}`);
 
-async function readBody(readable) {
-	const chunks = [];
-	for await (const chunk of readable) {
-		chunks.push(typeof chunk === "string" ? Buffer.from(chunk) : chunk);
-	}
-	return Buffer.concat(chunks).toString("utf8");
-}
+// async function readBody(readable) {
+// 	const chunks = [];
+// 	for await (const chunk of readable) {
+// 		chunks.push(typeof chunk === "string" ? Buffer.from(chunk) : chunk);
+// 	}
+// 	return Buffer.concat(chunks).toString("utf8");
+// }
 
 export async function POST(req) {
 	try {
-		console.log(req);
 		const { isValidSignature, body } = await parseBody(
 			req,
 			process.env.SANITY_REVALIDATE_SECRET
@@ -61,7 +60,12 @@ export async function POST(req) {
 
 		revalidateTag(body._type);
 
-		return NextResponse.json({ body });
+		return NextResponse.json({
+			status: 200,
+			revalidated: true,
+			now: Date.now(),
+			body,
+		});
 	} catch (err) {
 		console.error(err);
 		return new Response(err.message, { status: 500 });
