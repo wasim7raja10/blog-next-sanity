@@ -5,6 +5,7 @@ import Header from "@/components/header";
 import { cn } from "@/lib/utils";
 
 import "@/styles/index.css";
+import Container from "@/components/container";
 
 export const fontSans = FontSans({
 	subsets: ["latin"],
@@ -20,7 +21,9 @@ export default function RootLayout({ children }) {
 			>
 				<div className="min-h-screen">
 					<Header />
-					<main>{children}</main>
+					<main>
+						<Container>{children}</Container>
+					</main>
 				</div>
 				<Footer />
 			</body>

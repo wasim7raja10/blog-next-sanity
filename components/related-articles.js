@@ -1,11 +1,15 @@
 import { relatedPostListQuery } from "@/lib/queries";
-import { sanityClient } from "@/lib/sanity.server";
+import { sanityFetch } from "@/lib/sanity.server";
 import Link from "next/link";
 
 export default async function RelatedArticles({ categories, excludedSlug }) {
-	const data = await sanityClient.fetch(relatedPostListQuery, {
-		category: categories[0].slug,
-		excludedSlug,
+	const data = await sanityFetch({
+		query: relatedPostListQuery,
+		qParams: {
+			category: categories[0].slug,
+			excludedSlug,
+		},
+		tags: ["post", "category"],
 	});
 	return (
 		<>

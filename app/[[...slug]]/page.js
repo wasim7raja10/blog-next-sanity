@@ -4,10 +4,10 @@ import {
 	indexQuery,
 	postListByCategoryQuery,
 } from "@/lib/queries";
-import { sanityClient } from "@/lib/sanity.server";
+import { sanityFetch } from "@/lib/sanity.server";
 
 export async function generateStaticParams() {
-	const posts = await sanityClient.fetch(categoriesQuery);
+	const posts = await sanityFetch({ query: categoriesQuery, tags: ["post"] });
 
 	return posts
 		.map((post) => ({
@@ -22,15 +22,17 @@ export default async function Page({ params }) {
 	let posts = [];
 
 	if (category) {
-		posts = await sanityClient.fetch(postListByCategoryQuery, {
-			category,
+		posts = await sanityFetch({
+			query: postListByCategoryQuery,
+			qParams: { category },
+			tags: ["post"],
 		});
 	} else {
-		posts = await sanityClient.fetch(indexQuery);
+		posts = await sanityFetch({ query: indexQuery, tags: ["post"] });
 	}
 
 	return (
-		<div className="grid grid-cols-3 gap-10 mx-auto max-w-max mb-40">
+		<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 mx-auto max-w-max mb-40">
 			{posts.length > 0 &&
 				posts.map((it) => (
 					<HeroPost
@@ -47,3 +49,5 @@ export default async function Page({ params }) {
 		</div>
 	);
 }
+
+export const dynamicParams = false;
