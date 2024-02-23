@@ -4,7 +4,6 @@ import Container from "./container";
 import Link from "next/link";
 import Brand from "./brand";
 import Search from "./search";
-import Icon from "./icon";
 import {
 	Sheet,
 	SheetClose,
@@ -12,6 +11,7 @@ import {
 	SheetTrigger,
 } from "@/components/ui/sheet";
 import { Button } from "./ui/button";
+import { ArrowLeftIcon, SearchIcon } from "lucide-react";
 
 export default function Header() {
 	return (
@@ -29,12 +29,12 @@ export default function Header() {
 									variant="ghost"
 									size="icon"
 								>
-									<Icon name={"search"} size={20} />
+									<SearchIcon size={20} />
 								</Button>
 							</SheetTrigger>
 							<SheetContent className="w-full sm:max-w-lg">
 								<SheetClose className="pb-4">
-									<Icon name={"arrow-left"} />
+									<ArrowLeftIcon />
 								</SheetClose>
 								<Search />
 							</SheetContent>
