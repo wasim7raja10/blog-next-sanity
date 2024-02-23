@@ -23,7 +23,7 @@ export default function Header() {
 					</Link>
 					<div>
 						<Sheet>
-							<SheetTrigger>
+							<SheetTrigger asChild>
 								<Button
 									className="bg-card hover:bg-background rounded-full"
 									variant="ghost"
