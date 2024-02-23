@@ -49,3 +49,5 @@ export default async function Page({ params }) {
 		</div>
 	);
 }
+
+export const dynamicParams = false;

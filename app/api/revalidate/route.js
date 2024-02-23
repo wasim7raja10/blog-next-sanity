@@ -1,5 +1,3 @@
-import { isValidSignature, SIGNATURE_HEADER_NAME } from "@sanity/webhook";
-import { sanityClient } from "../../../lib/sanity.server";
 import { revalidateTag } from "next/cache";
 import { NextResponse } from "next/server";
 import { parseBody } from "next-sanity/webhook";
