@@ -4,10 +4,10 @@ import {
 	indexQuery,
 	postListByCategoryQuery,
 } from "@/lib/queries";
-import { sanityClient } from "@/lib/sanity.server";
+import { sanityFetch } from "@/lib/sanity.server";
 
 export async function generateStaticParams() {
-	const posts = await sanityClient.fetch(categoriesQuery);
+	const posts = await sanityFetch({ query: categoriesQuery, tags: ["post"] });
 
 	return posts
 		.map((post) => ({
@@ -22,11 +22,12 @@ export default async function Page({ params }) {
 	let posts = [];
 
 	if (category) {
-		posts = await sanityClient.fetch(postListByCategoryQuery, {
-			category,
+		posts = await sanityFetch({
+			query: postListByCategoryQuery,
+			tags: ["post"],
 		});
 	} else {
-		posts = await sanityClient.fetch(indexQuery);
+		posts = await sanityFetch({ query: indexQuery, tags: ["post"] });
 	}
 
 	return (
