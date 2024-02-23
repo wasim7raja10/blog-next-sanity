@@ -37,7 +37,7 @@ export default function Post({ data = {} }) {
 				</div>
 				<aside className="w-60 hidden lg:block pt-6">
 					{/* Ad */}
-					<div className="py-2 h-[90vh] bg-black"></div>
+					<div className="py-2 h-[90vh]"></div>
 				</aside>
 			</div>
 			<div className="sm:py-36 py-16">

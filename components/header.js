@@ -11,6 +11,7 @@ import {
 	SheetContent,
 	SheetTrigger,
 } from "@/components/ui/sheet";
+import { Button } from "./ui/button";
 
 export default function Header() {
 	return (
@@ -20,15 +21,18 @@ export default function Header() {
 					<Link href={"/"}>
 						<Brand />
 					</Link>
-					<div className="hidden sm:block">
-						<Search />
-					</div>
-					<div className="sm:hidden">
+					<div>
 						<Sheet>
 							<SheetTrigger>
-								<Icon size={20} name={"search"} />
+								<Button
+									className="bg-card hover:bg-background rounded-full"
+									variant="ghost"
+									size="icon"
+								>
+									<Icon name={"search"} size={20} />
+								</Button>
 							</SheetTrigger>
-							<SheetContent className="w-full">
+							<SheetContent className="w-full sm:max-w-lg">
 								<SheetClose className="pb-4">
 									<Icon name={"arrow-left"} />
 								</SheetClose>
