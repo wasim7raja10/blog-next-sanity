@@ -2,9 +2,21 @@ import { revalidateTag } from "next/cache";
 import { NextResponse } from "next/server";
 import { parseBody } from "next-sanity/webhook";
 import indexer from "sanity-algolia";
-import { algoliaServerClient } from "@/lib/algolia";
-import { sanityClient } from "@/lib/sanity.server";
 import { algoliaPostProjection } from "@/lib/queries";
+import algoliasearch from "algoliasearch";
+import { createClient } from "next-sanity";
+
+const algoliaServerClient = algoliasearch(
+	process.env.ALGOLIA_APPLICATION_ID,
+	process.env.ALGOLIA_ADMIN_API_KEY
+);
+
+const sanityClient = createClient({
+	dataset: process.env.NEXT_PUBLIC_SANITY_DATASET || "production",
+	projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
+	useCdn: true,
+	apiVersion: "2022-03-13",
+});
 
 export async function POST(req) {
 	try {
@@ -48,6 +60,6 @@ export async function POST(req) {
 		return NextResponse.json({ status: 200, body });
 	} catch (err) {
 		console.error(err);
-		return new Response(err.message, { status: 500 });
+		return new Response({ err, body }, { status: 500 });
 	}
 }
