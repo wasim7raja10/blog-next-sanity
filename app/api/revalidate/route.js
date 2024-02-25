@@ -8,12 +8,12 @@ import { algoliaPostProjection } from "@/lib/queries";
 
 export async function POST(req) {
 	try {
-		const { isValidSignature } = await parseBody(
+		const { isValidSignature, body } = await parseBody(
 			req,
 			process.env.SANITY_REVALIDATE_SECRET
 		);
 
-		const body = await req.json();
+		// const body = await req.json();
 
 		if (!isValidSignature) {
 			const message = "Invalid signature";
