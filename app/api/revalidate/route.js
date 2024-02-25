@@ -7,10 +7,12 @@ import { sanityClient } from "@/lib/sanity.server";
 
 export async function POST(req) {
 	try {
-		const { isValidSignature, body } = await parseBody(
+		const { isValidSignature } = await parseBody(
 			req,
 			process.env.SANITY_REVALIDATE_SECRET
 		);
+
+		const { body } = req;
 
 		if (!isValidSignature) {
 			const message = "Invalid signature";
@@ -37,8 +39,6 @@ export async function POST(req) {
 			},
 			(document) => document
 		);
-
-		console.log();
 
 		revalidateTag(body._type);
 
