@@ -4,6 +4,7 @@ import { parseBody } from "next-sanity/webhook";
 import indexer from "sanity-algolia";
 import { algoliaServerClient } from "@/lib/algolia";
 import { sanityClient } from "@/lib/sanity.server";
+import { algoliaPostProjection } from "@/lib/queries";
 
 export async function POST(req) {
 	try {
@@ -12,7 +13,7 @@ export async function POST(req) {
 			process.env.SANITY_REVALIDATE_SECRET
 		);
 
-		const { body } = req;
+		const body = await req.json();
 
 		if (!isValidSignature) {
 			const message = "Invalid signature";
@@ -34,7 +35,7 @@ export async function POST(req) {
 			{
 				post: {
 					index: algoliaIndex,
-					projection: algoliaPostField,
+					projection: algoliaPostProjection,
 				},
 			},
 			(document) => document
@@ -42,12 +43,9 @@ export async function POST(req) {
 
 		revalidateTag(body._type);
 
-		return sanityAlgolia.webhookSync(sanityClient, body).then(() =>
-			NextResponse.json({
-				status: 200,
-				body,
-			})
-		);
+		await sanityAlgolia.webhookSync(sanityClient, body);
+
+		return NextResponse.json({ status: 200, body });
 	} catch (err) {
 		console.error(err);
 		return new Response(err.message, { status: 500 });
