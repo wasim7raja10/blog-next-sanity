@@ -8,19 +8,19 @@ import { algoliaPostProjection } from "@/lib/queries";
 
 export async function POST(req) {
 	try {
-		const { isValidSignature, body } = await parseBody(
-			req,
-			process.env.SANITY_REVALIDATE_SECRET
-		);
+		// const { isValidSignature, body } = await parseBody(
+		// 	req,
+		// 	process.env.SANITY_REVALIDATE_SECRET
+		// );
 
-		// const body = await req.json();
+		const body = await req.json();
 
-		if (!isValidSignature) {
-			const message = "Invalid signature";
-			return new Response(JSON.stringify({ message, isValidSignature, body }), {
-				status: 401,
-			});
-		}
+		// if (!isValidSignature) {
+		// 	const message = "Invalid signature";
+		// 	return new Response(JSON.stringify({ message, isValidSignature, body }), {
+		// 		status: 401,
+		// 	});
+		// }
 
 		if (!body?._type) {
 			const message = "Bad Request";
@@ -48,10 +48,6 @@ export async function POST(req) {
 		return NextResponse.json({ status: 200, body });
 	} catch (err) {
 		console.error(err);
-		return NextResponse.json({
-			status: 500,
-			body,
-			error: err.message,
-		});
+		return new Response(err.message, { status: 500 });
 	}
 }
