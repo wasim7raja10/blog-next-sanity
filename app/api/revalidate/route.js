@@ -1,22 +1,9 @@
 import { revalidateTag } from "next/cache";
 import { NextResponse } from "next/server";
-import { parseBody } from "next-sanity/webhook";
 import indexer from "sanity-algolia";
 import { algoliaPostProjection } from "@/lib/queries";
-import algoliasearch from "algoliasearch";
-import { createClient } from "next-sanity";
-
-const algoliaServerClient = algoliasearch(
-	process.env.ALGOLIA_APPLICATION_ID,
-	process.env.ALGOLIA_ADMIN_API_KEY
-);
-
-const sanityClient = createClient({
-	dataset: process.env.NEXT_PUBLIC_SANITY_DATASET || "production",
-	projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
-	useCdn: true,
-	apiVersion: "2022-03-13",
-});
+import { sanityClient } from "@/lib/sanity.server";
+import { algoliaServerClient } from "@/lib/algolia";
 
 export async function POST(req) {
 	try {
@@ -25,8 +12,6 @@ export async function POST(req) {
 		// 	process.env.SANITY_REVALIDATE_SECRET
 		// );
 
-		const body = await req.json();
-
 		// if (!isValidSignature) {
 		// 	const message = "Invalid signature";
 		// 	return new Response(JSON.stringify({ message, isValidSignature, body }), {
@@ -34,10 +19,16 @@ export async function POST(req) {
 		// 	});
 		// }
 
+		const body = await req.json();
+
+		console.log("body", body);
+
 		if (!body?._type) {
 			const message = "Bad Request";
 			return new Response({ message, body }, { status: 400 });
 		}
+
+		revalidateTag(body._type);
 
 		const algoliaIndex = algoliaServerClient.initIndex(
 			process.env.ALGOLIA_INDEX
@@ -52,8 +43,6 @@ export async function POST(req) {
 			},
 			(document) => document
 		);
-
-		revalidateTag(body._type);
 
 		await sanityAlgolia.webhookSync(sanityClient, body);
 
