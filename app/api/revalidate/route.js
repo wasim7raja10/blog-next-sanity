@@ -4,24 +4,20 @@ import indexer from "sanity-algolia";
 import { algoliaPostProjection } from "@/lib/queries";
 import { sanityClient } from "@/lib/sanity.server";
 import { algoliaServerClient } from "@/lib/algolia";
+import { parseBody } from "next-sanity/webhook";
 
 export async function POST(req) {
 	try {
-		// const { isValidSignature, body } = await parseBody(
-		// 	req,
-		// 	process.env.SANITY_REVALIDATE_SECRET
-		// );
-
-		// if (!isValidSignature) {
-		// 	const message = "Invalid signature";
-		// 	return new Response(JSON.stringify({ message, isValidSignature, body }), {
-		// 		status: 401,
-		// 	});
-		// }
-
-		const body = await req.json();
+		const { body, isValidSignature } = await parseBody(
+			req,
+			process.env.SANITY_REVALIDATE_SECRET
+		);
 
 		console.log("body", body);
+
+		if (!isValidSignature) {
+      return new Response("Invalid Signature", { status: 401 });
+    }
 
 		if (!body?._type) {
 			const message = "Bad Request";
