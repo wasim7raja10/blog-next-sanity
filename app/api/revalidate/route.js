@@ -8,25 +8,23 @@ import { parseBody } from "next-sanity/webhook";
 
 export async function POST(req) {
 	try {
-		// const { body, isValidSignature } = await parseBody(
-		// 	req,
-		// 	process.env.SANITY_REVALIDATE_SECRET
-		// );
-
-		const body = await req.json();
+		const { body, isValidSignature } = await parseBody(
+			req,
+			process.env.SANITY_REVALIDATE_SECRET
+		);
 
 		console.log("body", body);
 
-		// if (!isValidSignature) {
-		// 	return new Response("Invalid Signature", { status: 401 });
-		// }
+		if (!isValidSignature) {
+			return new Response("Invalid Signature", { status: 401 });
+		}
 
 		if (!body?._type) {
 			const message = "Bad Request";
 			return new Response({ message, body }, { status: 400 });
 		}
 
-		revalidateTag(body._type);
+		revalidateTag(body?._type);
 
 		const algoliaIndex = algoliaServerClient.initIndex(
 			process.env.ALGOLIA_INDEX
@@ -42,7 +40,7 @@ export async function POST(req) {
 			(document) => document
 		);
 
-		await sanityAlgolia.webhookSync(sanityClient, body);
+		await sanityAlgolia.webhookSync(sanityClient, { ids: body?.ids });
 
 		return NextResponse.json({ status: 200, body });
 	} catch (err) {
