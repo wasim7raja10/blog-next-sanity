@@ -8,16 +8,18 @@ import { parseBody } from "next-sanity/webhook";
 
 export async function POST(req) {
 	try {
-		const { body, isValidSignature } = await parseBody(
-			req,
-			process.env.SANITY_REVALIDATE_SECRET
-		);
+		// const { body, isValidSignature } = await parseBody(
+		// 	req,
+		// 	process.env.SANITY_REVALIDATE_SECRET
+		// );
+
+		const body = await req.json();
 
 		console.log("body", body);
 
-		if (!isValidSignature) {
-      return new Response("Invalid Signature", { status: 401 });
-    }
+		// if (!isValidSignature) {
+		// 	return new Response("Invalid Signature", { status: 401 });
+		// }
 
 		if (!body?._type) {
 			const message = "Bad Request";
