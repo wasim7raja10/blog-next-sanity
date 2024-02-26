@@ -19,13 +19,15 @@ export default function RootLayout({ children }) {
 			<body
 				className={cn("bg-background font-sans antialiased", fontSans.variable)}
 			>
-				<div className="min-h-screen">
-					<Header />
-					<main>
-						<Container>{children}</Container>
-					</main>
-				</div>
-				<Footer />
+				<Providers>
+					<div className="min-h-screen">
+						<Header />
+						<main>
+							<Container>{children}</Container>
+						</main>
+					</div>
+					<Footer />
+				</Providers>
 			</body>
 		</html>
 	);
