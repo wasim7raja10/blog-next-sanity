@@ -39,7 +39,7 @@ export default function Search() {
 				/>
 			</div>
 			<ScrollArea className="h-[88%] w-full rounded-md my-4">
-				<div className="flex flex-col gap-4 px-2">
+				<div className="flex flex-col gap-4">
 					{result.length > 0 &&
 						result.map((it) => (
 							<HeroPost
