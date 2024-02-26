@@ -6,6 +6,7 @@ import { cn } from "@/lib/utils";
 
 import "@/styles/index.css";
 import Container from "@/components/container";
+import Providers from "./provider";
 
 export const fontSans = FontSans({
 	subsets: ["latin"],

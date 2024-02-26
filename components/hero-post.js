@@ -1,9 +1,13 @@
+"use client";
+
 import Avatar from "../components/avatar";
 import Date from "../components/date";
 import CoverImage from "../components/cover-image";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { Badge } from "./ui/badge";
+import { useSetAtom } from "jotai";
+import { sheetAtom } from "@/lib/jotai";
 
 export default function HeroPost({
 	title,
@@ -15,8 +19,9 @@ export default function HeroPost({
 	isSmall,
 	category,
 }) {
+	const setSheetOpen = useSetAtom(sheetAtom);
 	return (
-		<Link href={`/posts/${slug}`}>
+		<Link onClick={() => setSheetOpen(false)} href={`/posts/${slug}`}>
 			<div
 				className={cn(
 					"bg-card max-w-[340px] rounded-md overflow-hidden space-y-3 hover:shodow hover:shadow-lg",
