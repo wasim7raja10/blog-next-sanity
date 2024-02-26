@@ -3,7 +3,7 @@ import Date from "../components/date";
 import CoverImage from "../components/cover-image";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
-import { Badge } from "./ui/badge";
+// import { Badge } from "./ui/badge";
 
 export default function HeroPost({
 	title,
@@ -14,9 +14,10 @@ export default function HeroPost({
 	slug,
 	isSmall,
 	category,
+	...restProps
 }) {
 	return (
-		<Link href={`/posts/${slug}`}>
+		<Link href={`/posts/${slug}`} {...restProps}>
 			<div
 				className={cn(
 					"bg-card max-w-[340px] rounded-md overflow-hidden space-y-3 hover:shodow hover:shadow-lg",
@@ -36,7 +37,7 @@ export default function HeroPost({
 					)}
 				>
 					<CoverImage slug={slug} title={title} image={coverImage} priority />
-					<Badge className="absolute bottom-2 right-2">#{category.name}</Badge>
+					{/* <Badge className="absolute bottom-2 right-2">#{category.name}</Badge> */}
 				</div>
 				<div
 					className={cn("px-4 pb-4 space-y-4 w-full", {
