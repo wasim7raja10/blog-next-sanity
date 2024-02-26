@@ -6,8 +6,6 @@ import CoverImage from "../components/cover-image";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 // import { Badge } from "./ui/badge";
-import { useSetAtom } from "jotai";
-import { sheetAtom } from "@/lib/jotai";
 
 export default function HeroPost({
 	title,
@@ -18,10 +16,10 @@ export default function HeroPost({
 	slug,
 	isSmall,
 	category,
+	...restProps
 }) {
-	const setSheetOpen = useSetAtom(sheetAtom);
 	return (
-		<Link onClick={() => setSheetOpen(false)} href={`/posts/${slug}`}>
+		<Link href={`/posts/${slug}`} {...restProps}>
 			<div
 				className={cn(
 					"bg-card max-w-[340px] rounded-md overflow-hidden space-y-3 hover:shodow hover:shadow-lg",

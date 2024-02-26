@@ -7,6 +7,7 @@ import { useDebouncedCallback } from "use-debounce";
 import { useState } from "react";
 import { algoliaIndex } from "@/lib/algolia";
 import HeroPost from "./hero-post";
+import { SheetClose } from "./ui/sheet";
 
 export default function Search() {
 	const [result, setResult] = useState([]);
@@ -46,17 +47,18 @@ export default function Search() {
 				<div className="flex flex-col gap-4">
 					{result.length > 0 &&
 						result.map((it) => (
-							<HeroPost
-								key={it.slug}
-								title={it.title}
-								coverImage={it.coverImage}
-								date={it.date}
-								author={it.author}
-								slug={it.slug}
-								excerpt={it.excerpt}
-								category={it.categories[0]}
-								isSmall
-							/>
+							<SheetClose asChild key={it.slug}>
+								<HeroPost
+									title={it.title}
+									coverImage={it.coverImage}
+									date={it.date}
+									author={it.author}
+									slug={it.slug}
+									excerpt={it.excerpt}
+									category={it.categories[0]}
+									isSmall
+								/>
+							</SheetClose>
 						))}
 				</div>
 			</ScrollArea>

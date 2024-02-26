@@ -9,13 +9,10 @@ import {
 } from "@/components/ui/sheet";
 import { Button } from "./ui/button";
 import { ArrowLeftIcon, SearchIcon } from "lucide-react";
-import { useAtom } from "jotai";
-import { sheetAtom } from "@/lib/jotai";
 
 export default function SearchSheet() {
-	const [sheetOpen, setSheetOpen] = useAtom(sheetAtom);
 	return (
-		<Sheet open={sheetOpen} onOpenChange={setSheetOpen}>
+		<Sheet>
 			<SheetTrigger asChild>
 				<Button
 					className="bg-card hover:bg-background rounded-full"
