@@ -5,7 +5,7 @@ import Date from "../components/date";
 import CoverImage from "../components/cover-image";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
-import { Badge } from "./ui/badge";
+// import { Badge } from "./ui/badge";
 import { useSetAtom } from "jotai";
 import { sheetAtom } from "@/lib/jotai";
 
@@ -41,7 +41,7 @@ export default function HeroPost({
 					)}
 				>
 					<CoverImage slug={slug} title={title} image={coverImage} priority />
-					<Badge className="absolute bottom-2 right-2">#{category.name}</Badge>
+					{/* <Badge className="absolute bottom-2 right-2">#{category.name}</Badge> */}
 				</div>
 				<div
 					className={cn("px-4 pb-4 space-y-4 w-full", {
