@@ -22,7 +22,7 @@ import { ScrollArea } from "./ui/scroll-area";
 
 export default function ArticleBar() {
 	return (
-		<div className="border mx-auto max-w-max h-12 rounded-full px-3 sm:px-8 text-sm 2xl:h-14 flex gap-3 sm:gap-8 items-center sticky top-10 bg-white">
+		<div className="border mx-auto max-w-max h-12 rounded-full px-3 sm:px-8 text-sm 2xl:h-14 flex gap-3 sm:gap-8 items-center sticky top-6 bg-white">
 			<TooltipProvider delayDuration={0}>
 				<Tooltip>
 					<TooltipTrigger asChild>
