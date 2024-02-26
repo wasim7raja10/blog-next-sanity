@@ -1,11 +1,25 @@
+"use client";
+
 import { Mic, SearchIcon } from "lucide-react";
 import { Input } from "./ui/input";
 import { ScrollArea } from "./ui/scroll-area";
+import { useDebouncedCallback } from "use-debounce";
+import { useState } from "react";
+import { algoliaIndex } from "@/lib/algolia";
+import HeroPost from "./hero-post";
 
 export default function Search() {
-	const tags = Array.from({ length: 50 }).map(
-		(_, i, a) => `v1.2.0-beta.${a.length - i}`
-	);
+	const [result, setResult] = useState([]);
+
+	const handleSearch = useDebouncedCallback(async (term) => {
+		try {
+			const { hits } = await algoliaIndex.search(term);
+			setResult(hits);
+		} catch (err) {
+			console.error("Error search algolia", err);
+		}
+	}, 300);
+
 	return (
 		<>
 			<div className="relative">
@@ -17,20 +31,29 @@ export default function Search() {
 					type="search"
 					placeholder="Search your topic"
 					className="rounded-lg px-10 py-3 min-w-full sm:min-w-80 border-foreground border-[1.5px] border-solid"
+					onChange={(e) => handleSearch(e.target.value)}
 				/>
 				<Mic
 					size={20}
 					className="absolute right-2 top-0 transform translate-y-1/2 cursor-pointer"
 				/>
 			</div>
-			<ScrollArea className="h-[88%] w-full rounded-md border my-4">
-				<div className="p-4">
-					<h4 className="mb-4 text-sm font-medium leading-none">Tags</h4>
-					{tags.map((tag) => (
-						<div key={tag} className="text-sm">
-							{tag}
-						</div>
-					))}
+			<ScrollArea className="h-[88%] w-full rounded-md my-4">
+				<div className="flex flex-col gap-4 px-2">
+					{result.length > 0 &&
+						result.map((it) => (
+							<HeroPost
+								key={it.slug}
+								title={it.title}
+								coverImage={it.coverImage}
+								date={it.date}
+								author={it.author}
+								slug={it.slug}
+								excerpt={it.excerpt}
+								category={it.categories[0]}
+								isSmall
+							/>
+						))}
 				</div>
 			</ScrollArea>
 		</>
