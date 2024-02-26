@@ -12,6 +12,10 @@ export default function Search() {
 	const [result, setResult] = useState([]);
 
 	const handleSearch = useDebouncedCallback(async (term) => {
+		if (term.trim().length === 0) {
+			setResult([]);
+			return;
+		}
 		try {
 			const { hits } = await algoliaIndex.search(term);
 			setResult(hits);
