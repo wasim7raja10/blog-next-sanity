@@ -9,14 +9,11 @@ import {
 } from "@/components/ui/sheet";
 import { Button } from "./ui/button";
 import { ArrowLeftIcon, SearchIcon } from "lucide-react";
-import { useAtom, useAtomValue, useSetAtom } from "jotai";
+import { useAtom } from "jotai";
 import { sheetAtom } from "@/lib/jotai";
 
 export default function SearchSheet() {
 	const [sheetOpen, setSheetOpen] = useAtom(sheetAtom);
-
-	console.log(sheetOpen);
-
 	return (
 		<Sheet open={sheetOpen} onOpenChange={setSheetOpen}>
 			<SheetTrigger asChild>
