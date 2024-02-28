@@ -4,6 +4,8 @@ import Container from "./container";
 import Link from "next/link";
 import Brand from "./brand";
 import SearchSheet from "./search-sheet";
+import { Button } from "./ui/button";
+import Login from "./login";
 
 export default function Header() {
 	return (
@@ -13,8 +15,10 @@ export default function Header() {
 					<Link href={"/"}>
 						<Brand />
 					</Link>
-					<div>
+					<div className="flex items-center gap-4">
 						<SearchSheet />
+						<Link href={"/private"}>Private</Link>
+						<Login />
 					</div>
 				</div>
 			</Container>
