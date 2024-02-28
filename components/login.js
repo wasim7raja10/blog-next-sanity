@@ -12,35 +12,48 @@ import {
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { Label } from "./ui/label";
+import { useState } from "react";
 
 export default function Login() {
+	const [isLogin, setIsLogin] = useState(true);
 	return (
 		<Dialog>
 			<DialogTrigger asChild>
-				<Button className="bg-Dialog hover:bg-background" variant="ghost">
-					Log in
+				<Button className="bg-Dialog hover:bg-background" variant="outline">
+					Login
 				</Button>
 			</DialogTrigger>
-			<DialogContent className="">
+			<DialogContent className="sm:max-w-lg max-w-[90%] rounded-lg">
 				<DialogHeader>
-					<DialogTitle className="text-2xl">Create an account</DialogTitle>
+					<DialogTitle className="text-2xl">
+						{isLogin ? "Log in with email" : "Create an account"}
+					</DialogTitle>
 					<DialogDescription>
-						Enter your email below to create your account
+						{isLogin ? "No account?" : "Already have an account?"}
+						<Button
+							variant="ghost"
+							className="p-2 hover:bg-white hover:text-accent-foreground"
+							onClick={() => setIsLogin((curr) => !curr)}
+						>
+							<span className="underline">
+								{isLogin ? "Create one" : "Login"}
+							</span>
+						</Button>
 					</DialogDescription>
 				</DialogHeader>
 
 				<div className="grid gap-4">
-					<div className="grid grid-cols-2 gap-6">
+					{/* <div className="grid grid-cols-2 gap-6">
 						<Button variant="outline">
-							{/* <Github className="mr-2 h-4 w-4" /> */}
+							<Github className="mr-2 h-4 w-4" />
 							Github
 						</Button>
 						<Button variant="outline">
-							{/* <Icons.google className="mr-2 h-4 w-4" /> */}
+							<Icons.google className="mr-2 h-4 w-4" />
 							Google
 						</Button>
-					</div>
-					<div className="relative">
+					</div> */}
+					{/* <div className="relative">
 						<div className="absolute inset-0 flex items-center">
 							<span className="w-full border-t" />
 						</div>
@@ -49,18 +62,31 @@ export default function Login() {
 								Or continue with
 							</span>
 						</div>
-					</div>
+					</div> */}
 					<div className="grid gap-2">
 						<Label htmlFor="email">Email</Label>
-						<Input id="email" type="email" placeholder="m@example.com" />
+						<Input
+							required
+							id="email"
+							type="email"
+							placeholder="m@example.com"
+						/>
 					</div>
 					<div className="grid gap-2">
 						<Label htmlFor="password">Password</Label>
-						<Input id="password" type="password" />
+						<Input required id="password" type="password" />
 					</div>
+					{!isLogin && (
+						<div className="grid gap-2">
+							<Label htmlFor="confirmPassword">Confirm Password</Label>
+							<Input required id="confirmPassword" type="password" />
+						</div>
+					)}
 				</div>
 				<DialogFooter>
-					<Button className="w-full">Create account</Button>
+					<Button className="w-full">
+						{isLogin ? "Log in" : "Create account"}
+					</Button>
 				</DialogFooter>
 			</DialogContent>
 		</Dialog>
