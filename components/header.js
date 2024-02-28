@@ -1,13 +1,20 @@
-"use client";
-import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
+"use server";
+
 import Container from "./container";
 import Link from "next/link";
 import Brand from "./brand";
 import SearchSheet from "./search-sheet";
-import { Button } from "./ui/button";
-import AuthModal from "./auth-modal";
+import { createClient } from "@/lib/supabase/server";
+import SignoutButton from "./signout-button";
+import LoginButton from "./login-button";
 
-export default function Header() {
+export default async function Header() {
+	const supabase = createClient();
+
+	const {
+		data: { user },
+	} = await supabase.auth.getUser();
+
 	return (
 		<div className="bg-card py-4">
 			<Container>
@@ -17,20 +24,7 @@ export default function Header() {
 					</Link>
 					<div className="flex items-center gap-4">
 						<SearchSheet />
-						<Link href={"/private"}>Private</Link>
-						<Dialog>
-							<DialogTrigger asChild>
-								<Button
-									className="bg-Dialog hover:bg-background"
-									variant="outline"
-								>
-									Login
-								</Button>
-							</DialogTrigger>
-							<DialogContent className="sm:max-w-lg max-w-[90%] rounded-lg">
-								<AuthModal />
-							</DialogContent>
-						</Dialog>
+						{user ? <SignoutButton /> : <LoginButton />}
 					</div>
 				</div>
 			</Container>
