@@ -10,6 +10,8 @@ import { Input } from "./ui/input";
 import { Label } from "./ui/label";
 import { useState } from "react";
 import { login, signup } from "@/lib/auth/actions";
+import { useFormStatus } from "react-dom";
+import { Loader2 } from "lucide-react";
 
 export default function AuthModal() {
 	const [isLogin, setIsLogin] = useState(true);
@@ -33,7 +35,7 @@ export default function AuthModal() {
 				</DialogDescription>
 			</DialogHeader>
 
-			<form className="grid gap-4">
+			<form action={isLogin ? login : signup} className="grid gap-4">
 				<div className="grid gap-2">
 					<Label htmlFor="email">Email</Label>
 					<Input
@@ -59,10 +61,18 @@ export default function AuthModal() {
 						/>
 					</div>
 				)}
-				<Button formAction={isLogin ? login : signup} className="w-full">
-					{isLogin ? "Log in" : "Create account"}
-				</Button>
+				<FormButton isLogin={isLogin} />
 			</form>
 		</>
+	);
+}
+
+function FormButton({ isLogin }) {
+	const { pending } = useFormStatus();
+	return (
+		<Button disabled={pending} className="w-full">
+			{pending && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+			{isLogin ? "Log in" : "Create account"}
+		</Button>
 	);
 }
