@@ -5,7 +5,7 @@ import Link from "next/link";
 import Brand from "./brand";
 import SearchSheet from "./search-sheet";
 import { createClient } from "@/lib/supabase/server";
-import SignoutButton from "./signout-button";
+import LogoutButton from "./logout-button";
 import LoginButton from "./login-button";
 
 export default async function Header() {
@@ -24,7 +24,7 @@ export default async function Header() {
 					</Link>
 					<div className="flex items-center gap-4">
 						<SearchSheet />
-						{user ? <SignoutButton /> : <LoginButton />}
+						{user ? <LogoutButton /> : <LoginButton />}
 					</div>
 				</div>
 			</Container>
