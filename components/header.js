@@ -23,6 +23,7 @@ export default async function Header() {
 						<Brand />
 					</Link>
 					<div className="flex items-center gap-4">
+						{user && <Link href={"/bookmarks"}>Bookmark</Link>}
 						<SearchSheet />
 						{user ? <LogoutButton /> : <LoginButton />}
 					</div>
