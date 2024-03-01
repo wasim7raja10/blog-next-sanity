@@ -26,7 +26,7 @@ export default async function Header() {
 							<Brand />
 						</div>
 					</Link>
-					<div className="flex items-center sm:gap-4">
+					<div className="flex items-center gap-2 sm:gap-4">
 						{/* {user && (
 							<Button
 								className="bg-card hover:bg-background rounded-full"
