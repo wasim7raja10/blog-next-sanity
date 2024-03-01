@@ -4,9 +4,37 @@ import PostBody from "./post-body";
 import RelatedArticles from "./related-articles";
 import { Separator } from "./ui/separator";
 import MoreStories from "./more-stories";
+import { createClient } from "@/lib/supabase/server";
 
-export default function Post({ data = {} }) {
+export default async function Post({ data = {} }) {
 	const { post, morePosts } = data;
+
+	const supabase = createClient();
+
+	let isBookmarked = false,
+		isLiked = false,
+		numLikes = 0;
+
+	const {
+		data: { user },
+	} = await supabase.auth.getUser();
+
+	if (user) {
+		isBookmarked =
+			(await supabase.from("bookmarks").select().match({ slug: post.slug }))
+				.data.length > 0;
+
+		isLiked =
+			(
+				await supabase
+					.from("likes")
+					.select()
+					.match({ slug: post.slug, user_id: user.id })
+			).data.length > 0;
+	}
+
+	numLikes = (await supabase.from("likes").select().match({ slug: post.slug }))
+		.data.length;
 
 	return (
 		<main className="">
@@ -30,7 +58,11 @@ export default function Post({ data = {} }) {
 								author={post.author}
 								categories={post.categories}
 							/>
-							<ArticleBar />
+							<ArticleBar
+								isBookmarked={isBookmarked}
+								isLiked={isLiked}
+								numLikes={numLikes}
+							/>
 							<PostBody post={post} />
 						</article>
 					</div>

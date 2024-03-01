@@ -6,6 +6,7 @@ import { cn } from "@/lib/utils";
 
 import "@/styles/index.css";
 import Container from "@/components/container";
+import { Toaster } from "@/components/ui/toaster";
 
 export const fontSans = FontSans({
 	subsets: ["latin"],
@@ -26,6 +27,7 @@ export default function RootLayout({ children }) {
 					</main>
 				</div>
 				<Footer />
+				<Toaster />
 			</body>
 		</html>
 	);
