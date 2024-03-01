@@ -6,10 +6,12 @@ import { useState } from "react";
 import { Button } from "./ui/button";
 import { usePathname } from "next/navigation";
 import { createClient } from "@/lib/supabase/client";
+import { useToast } from "./ui/use-toast";
 
 export default function LikeButton({ isLiked, numLikes }) {
 	const [isLikedState, setIsLikedState] = useState(isLiked);
 	const [numLikeState, setNumLikeState] = useState(numLikes);
+	const { toast } = useToast();
 
 	const pathname = usePathname();
 	const slug = pathname.split("/").at(2);
@@ -31,6 +33,10 @@ export default function LikeButton({ isLiked, numLikes }) {
 				setIsLikedState(false);
 				setNumLikeState((curr) => curr - 1);
 			}
+		} else {
+			toast({
+				description: "Please log in to like the article.",
+			});
 		}
 	}
 	return (

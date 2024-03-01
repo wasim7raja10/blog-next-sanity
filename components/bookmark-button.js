@@ -6,9 +6,11 @@ import { Tooltip, TooltipContent, TooltipTrigger } from "./ui/tooltip";
 import { createClient } from "@/lib/supabase/client";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
+import { useToast } from "./ui/use-toast";
 
 export default function BookmarkButton({ isBookmarked = false }) {
 	const [isBookmarkedState, setIsBookmarkedState] = useState(isBookmarked);
+	const { toast } = useToast();
 
 	const pathname = usePathname();
 	const slug = pathname.split("/").at(2);
@@ -33,6 +35,10 @@ export default function BookmarkButton({ isBookmarked = false }) {
 					.match({ slug, user_id: user.id });
 				setIsBookmarkedState(false);
 			}
+		} else {
+			toast({
+				description: "Please log in to bookmark the article.",
+			});
 		}
 	}
 
