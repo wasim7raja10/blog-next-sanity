@@ -18,7 +18,7 @@ export default async function CategoriesBar({ currentCategory }) {
 					size="sm"
 				>
 					<Link href="/">
-						<ToggleGroupItem value="explore">Explore</ToggleGroupItem>
+						<ToggleGroupItem value="index">Explore</ToggleGroupItem>
 					</Link>
 					{data?.map((it) => (
 						<Link key={it.slug} href={it.slug}>

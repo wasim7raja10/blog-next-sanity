@@ -17,7 +17,13 @@ export async function generateStaticParams() {
 }
 
 export default async function Page({ params }) {
-	const category = params.slug ? params.slug[0] : undefined;
+	let category = null;
+
+	if (params.slug) {
+		if (params.slug[0] !== "index") {
+			category = params.slug[0];
+		}
+	}
 
 	let posts = [];
 
