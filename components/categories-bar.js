@@ -8,6 +8,8 @@ export default async function CategoriesBar({ currentCategory }) {
 		query: categoriesQuery,
 		tags: ["category"],
 	});
+
+	console.log(data);
 	return (
 		<div className="py-4 mb-6 sm:py-6 sticky top-0 bg-background z-10 -mx-4 sm:mx-0 px-4 sm:px-0">
 			<div className="max-w-max mx-auto">
