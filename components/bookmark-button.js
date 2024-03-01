@@ -27,7 +27,10 @@ export default function BookmarkButton({ isBookmarked = false }) {
 				});
 				setIsBookmarkedState(true);
 			} else {
-				await supabase.from("bookmarks").delete().match({ slug });
+				await supabase
+					.from("bookmarks")
+					.delete()
+					.match({ slug, user_id: user.id });
 				setIsBookmarkedState(false);
 			}
 		}
