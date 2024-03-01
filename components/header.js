@@ -27,7 +27,7 @@ export default async function Header() {
 						</div>
 					</Link>
 					<div className="flex items-center sm:gap-4">
-						{user && (
+						{/* {user && (
 							<Button
 								className="bg-card hover:bg-background rounded-full"
 								variant="ghost"
@@ -38,7 +38,7 @@ export default async function Header() {
 									<Bookmark size={20} />
 								</Link>
 							</Button>
-						)}
+						)} */}
 						<SearchSheet />
 						{user ? <LogoutButton /> : <LoginButton />}
 					</div>
