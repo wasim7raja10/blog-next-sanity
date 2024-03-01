@@ -12,7 +12,8 @@ export default async function Post({ data = {} }) {
 	const supabase = createClient();
 
 	let isBookmarked = false,
-		isLiked = false;
+		isLiked = false,
+		numLikes = 0;
 
 	const {
 		data: { user },
@@ -22,7 +23,18 @@ export default async function Post({ data = {} }) {
 		isBookmarked =
 			(await supabase.from("bookmarks").select().match({ slug: post.slug }))
 				.data.length > 0;
+
+		isLiked =
+			(
+				await supabase
+					.from("likes")
+					.select()
+					.match({ slug: post.slug, user_id: user.id })
+			).data.length > 0;
 	}
+
+	numLikes = (await supabase.from("likes").select().match({ slug: post.slug }))
+		.data.length;
 
 	return (
 		<main className="">
@@ -46,7 +58,11 @@ export default async function Post({ data = {} }) {
 								author={post.author}
 								categories={post.categories}
 							/>
-							<ArticleBar isBookmarked={isBookmarked} />
+							<ArticleBar
+								isBookmarked={isBookmarked}
+								isLiked={isLiked}
+								numLikes={numLikes}
+							/>
 							<PostBody post={post} />
 						</article>
 					</div>

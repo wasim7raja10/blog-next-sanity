@@ -22,11 +22,11 @@ import { ScrollArea } from "./ui/scroll-area";
 import BookmarkButton from "./bookmark-button";
 import LikeButton from "./like-button";
 
-export default function ArticleBar({ isBookmarked, isLiked }) {
+export default function ArticleBar({ isBookmarked, isLiked, numLikes }) {
 	return (
 		<div className="border mx-auto max-w-max h-12 rounded-full px-3 sm:px-8 text-sm 2xl:h-14 flex gap-3 sm:gap-8 items-center sticky top-6 bg-white">
 			<TooltipProvider delayDuration={0}>
-				<LikeButton isLiked={isLiked} />
+				<LikeButton isLiked={isLiked} numLikes={numLikes} />
 				<Separator orientation="vertical" className="h-6" />
 
 				<BookmarkButton isBookmarked={isBookmarked} />
