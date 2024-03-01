@@ -1,6 +1,6 @@
 "use client";
 
-import { Bookmark, BookmarkCheck } from "lucide-react";
+import { Bookmark } from "lucide-react";
 import { Button } from "./ui/button";
 import { Tooltip, TooltipContent, TooltipTrigger } from "./ui/tooltip";
 import { createClient } from "@/lib/supabase/client";
@@ -40,7 +40,7 @@ export default function BookmarkButton({ isBookmarked = false }) {
 		<Tooltip>
 			<TooltipTrigger asChild>
 				<Button onClick={handleBookmark} variant="ghost" size="icon">
-					{isBookmarkedState ? <BookmarkCheck /> : <Bookmark />}
+					{isBookmarkedState ? <Bookmark fill="black" /> : <Bookmark />}
 				</Button>
 			</TooltipTrigger>
 			<TooltipContent>
