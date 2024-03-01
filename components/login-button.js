@@ -8,7 +8,10 @@ export default function LoginButton() {
 	return (
 		<Dialog>
 			<DialogTrigger asChild>
-				<Button className="bg-Dialog hover:bg-background" variant="outline">
+				<Button
+					className="bg-Dialog hover:bg-background px-3 sm:px-8 h-8 sm:h-10"
+					variant="outline"
+				>
 					Login
 				</Button>
 			</DialogTrigger>

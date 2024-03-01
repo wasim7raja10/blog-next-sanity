@@ -16,7 +16,10 @@ export default function LogoutButton() {
 function FormButton() {
 	const { pending } = useFormStatus();
 	return (
-		<Button className="bg-Dialog hover:bg-background" variant="outline">
+		<Button
+			className="bg-Dialog hover:bg-background px-3 sm:px-8 h-8 sm:h-10"
+			variant="outline"
+		>
 			{pending && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
 			Sign out
 		</Button>

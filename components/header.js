@@ -7,6 +7,8 @@ import SearchSheet from "./search-sheet";
 import { createClient } from "@/lib/supabase/server";
 import LogoutButton from "./logout-button";
 import LoginButton from "./login-button";
+import { Bookmark } from "lucide-react";
+import { Button } from "./ui/button";
 
 export default async function Header() {
 	const supabase = createClient();
@@ -20,10 +22,23 @@ export default async function Header() {
 			<Container>
 				<div className="flex justify-between items-center">
 					<Link href={"/"}>
-						<Brand />
+						<div className="w-[120px] sm:w-[150px]">
+							<Brand />
+						</div>
 					</Link>
-					<div className="flex items-center gap-4">
-						{user && <Link href={"/bookmarks"}>Bookmark</Link>}
+					<div className="flex items-center sm:gap-4">
+						{user && (
+							<Button
+								className="bg-card hover:bg-background rounded-full"
+								variant="ghost"
+								size="icon"
+								asChild
+							>
+								<Link href={"/bookmarks"}>
+									<Bookmark size={20} />
+								</Link>
+							</Button>
+						)}
 						<SearchSheet />
 						{user ? <LogoutButton /> : <LoginButton />}
 					</div>

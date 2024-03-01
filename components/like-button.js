@@ -48,7 +48,7 @@ export default function LikeButton({ isLiked, numLikes }) {
 					variant="ghost"
 				>
 					{isLikedState ? <Heart fill="red" stroke="red" /> : <Heart />}
-					<span className="text-lg">{numLikeState}</span>
+					<span className="text-xl">{numLikeState}</span>
 				</Button>
 			</TooltipTrigger>
 			<TooltipContent>
