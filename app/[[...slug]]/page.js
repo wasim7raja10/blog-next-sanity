@@ -17,13 +17,7 @@ export async function generateStaticParams() {
 }
 
 export default async function Page({ params }) {
-	let category = null;
-
-	if (params.slug) {
-		if (params.slug[0] !== "index") {
-			category = params.slug[0];
-		}
-	}
+	const category = params.slug ? params.slug[0] : undefined;
 
 	let posts = [];
 
@@ -38,7 +32,7 @@ export default async function Page({ params }) {
 	}
 
 	return (
-		<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 mx-auto max-w-max pb-24">
+		<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 mx-auto max-w-max mb-40">
 			{posts.length > 0 &&
 				posts.map((it) => (
 					<HeroPost

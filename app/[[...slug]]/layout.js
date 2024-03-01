@@ -1,21 +1,13 @@
 import CategoriesBar from "@/components/categories-bar";
 
 export default function Layout({ children, params }) {
-	let currentCategory = null;
+	const currentCategory = params.slug ? params.slug[0] : "explore";
 
-	if (params.slug) {
-		if (params.slug[0] !== "index") {
-			currentCategory = params.slug[0];
-		} else {
-			currentCategory = "index";
-		}
-	} else {
-		currentCategory = "index";
-	}
-
+	console.log(params);
 	return (
 		<section>
 			<CategoriesBar currentCategory={currentCategory} />
+			{JSON.stringify(params)}
 			{children}
 		</section>
 	);
