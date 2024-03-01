@@ -17,7 +17,7 @@ export async function generateStaticParams() {
 }
 
 export default async function Page({ params }) {
-	const category = params.slug ? params.slug[0] : undefined;
+	const category = params.slug[0] !== "index" ? params.slug[0] : undefined;
 
 	let posts = [];
 
@@ -30,7 +30,6 @@ export default async function Page({ params }) {
 	} else {
 		posts = await sanityFetch({ query: indexQuery, tags: ["post"] });
 	}
-	console.log(posts);
 
 	return (
 		<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 mx-auto max-w-max pb-24">

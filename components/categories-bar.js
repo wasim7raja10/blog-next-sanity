@@ -10,7 +10,6 @@ export default async function CategoriesBar({ currentCategory }) {
 	});
 	return (
 		<div className="py-4 mb-6 sm:py-6 sticky top-0 bg-background z-10 -mx-4 sm:mx-0 px-4 sm:px-0">
-			{currentCategory}
 			<div className="max-w-max mx-auto">
 				<ToggleGroup
 					value={currentCategory}
@@ -19,7 +18,7 @@ export default async function CategoriesBar({ currentCategory }) {
 					size="sm"
 				>
 					<Link href="/">
-						<ToggleGroupItem value="explore">Explore</ToggleGroupItem>
+						<ToggleGroupItem value="index">Explore</ToggleGroupItem>
 					</Link>
 					{data?.map((it) => (
 						<Link key={it.slug} href={it.slug}>
