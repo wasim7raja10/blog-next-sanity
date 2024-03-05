@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import { ToggleGroup, ToggleGroupItem } from "./ui/toggle-group";
 import { categoriesQuery } from "@/lib/queries";
@@ -18,7 +20,7 @@ export default async function CategoriesBar({ currentCategory }) {
 					size="sm"
 				>
 					<Link href="/">
-						<ToggleGroupItem value="index">Explore</ToggleGroupItem>
+						<ToggleGroupItem value="explore">Explore</ToggleGroupItem>
 					</Link>
 					{data?.map((it) => (
 						<Link key={it.slug} href={it.slug}>
