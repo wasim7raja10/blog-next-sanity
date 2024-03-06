@@ -4,13 +4,10 @@ import {
 	indexQuery,
 	postListByCategoryQuery,
 } from "@/lib/queries";
-import { sanityFetch } from "@/lib/sanity.server";
+import { sanityClient, sanityFetch } from "@/lib/sanity.server";
 
 export async function generateStaticParams() {
-	const posts = await sanityFetch({
-		query: categoriesQuery,
-		tags: ["category"],
-	});
+	const posts = await sanityClient.fetch(categoriesQuery);
 
 	return posts
 		.map((post) => ({
