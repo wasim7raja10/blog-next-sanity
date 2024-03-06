@@ -9,11 +9,9 @@ import { sanityFetch } from "@/lib/sanity.server";
 export async function generateStaticParams() {
 	const posts = await sanityFetch({ query: categoriesQuery, tags: ["post"] });
 
-	return posts
-		.map((post) => ({
-			slug: [post.slug],
-		}))
-		.concat({ slug: false });
+	return posts.map((post) => ({
+		slug: [post.slug],
+	}));
 }
 
 export default async function Page({ params }) {
