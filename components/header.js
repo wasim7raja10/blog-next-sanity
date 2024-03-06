@@ -1,3 +1,5 @@
+"use server";
+
 import Container from "./container";
 import Link from "next/link";
 import Brand from "./brand";
