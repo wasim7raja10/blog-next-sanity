@@ -1,3 +1,5 @@
+"use server";
+
 import Link from "next/link";
 import { ToggleGroup, ToggleGroupItem } from "./ui/toggle-group";
 import { categoriesQuery } from "@/lib/queries";
