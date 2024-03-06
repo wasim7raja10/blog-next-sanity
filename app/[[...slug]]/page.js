@@ -1,4 +1,5 @@
 import HeroPost from "@/components/hero-post";
+import { getCategory } from "@/lib/get-category";
 import {
 	categoriesQuery,
 	indexQuery,
@@ -17,7 +18,7 @@ export async function generateStaticParams() {
 }
 
 export default async function Page({ params }) {
-	const category = params.slug ? params.slug[0] : undefined;
+	const category = getCategory(params);
 
 	let posts = [];
 
