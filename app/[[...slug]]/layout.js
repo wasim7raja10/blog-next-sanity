@@ -13,7 +13,6 @@ export default async function Layout({ children, params }) {
 	return (
 		<section>
 			<CategoriesBar currentCategory={currentCategory} data={data} />
-			{JSON.stringify(params)}
 			{children}
 		</section>
 	);
