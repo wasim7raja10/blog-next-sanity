@@ -1,12 +1,11 @@
 "use server";
 
 import Container from "./container";
-import Link from "next/link";
-import Brand from "./brand";
 import SearchSheet from "./search-sheet";
 import { createClient } from "@/lib/supabase/server";
 import LogoutButton from "./logout-button";
 import LoginButton from "./login-button";
+import BrandLink from "./brand-link";
 // import { Bookmark } from "lucide-react";
 // import { Button } from "./ui/button";
 
@@ -21,11 +20,9 @@ export default async function Header() {
 		<div className="bg-card py-4">
 			<Container>
 				<div className="flex justify-between items-center">
-					<Link href={"/"}>
-						<div className="w-[120px] sm:w-[150px]">
-							<Brand />
-						</div>
-					</Link>
+					<div className="w-[120px] sm:w-[150px]">
+						<BrandLink />
+					</div>
 					<div className="flex items-center gap-2 sm:gap-4">
 						{/* {user && (
 							<Button
