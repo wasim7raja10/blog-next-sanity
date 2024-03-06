@@ -4,7 +4,6 @@ import Container from "./container";
 import Link from "next/link";
 import Brand from "./brand";
 import SearchSheet from "./search-sheet";
-import { createClient } from "@/lib/supabase/server";
 import LogoutButton from "./logout-button";
 import LoginButton from "./login-button";
 import { Bookmark } from "lucide-react";
@@ -16,6 +15,8 @@ export default function Header() {
 	// const {
 	// 	data: { user },
 	// } = await supabase.auth.getUser();
+
+	let user = {};
 
 	return (
 		<div className="bg-card py-4">
