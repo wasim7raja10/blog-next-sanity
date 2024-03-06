@@ -7,8 +7,8 @@ import SearchSheet from "./search-sheet";
 import { createClient } from "@/lib/supabase/server";
 import LogoutButton from "./logout-button";
 import LoginButton from "./login-button";
-import { Bookmark } from "lucide-react";
-import { Button } from "./ui/button";
+// import { Bookmark } from "lucide-react";
+// import { Button } from "./ui/button";
 
 export default async function Header() {
 	const supabase = createClient();
