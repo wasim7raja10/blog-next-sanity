@@ -8,7 +8,10 @@ import {
 import { sanityFetch } from "@/lib/sanity.server";
 
 export async function generateStaticParams() {
-	const posts = await sanityFetch({ query: categoriesQuery, tags: ["post"] });
+	const posts = await sanityFetch({
+		query: categoriesQuery,
+		tags: ["category"],
+	});
 
 	return posts
 		.map((post) => ({
