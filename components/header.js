@@ -1,4 +1,4 @@
-"use server";
+"use client";
 
 import Container from "./container";
 import Link from "next/link";
@@ -10,12 +10,12 @@ import LoginButton from "./login-button";
 import { Bookmark } from "lucide-react";
 import { Button } from "./ui/button";
 
-export default async function Header() {
-	const supabase = createClient();
+export default function Header() {
+	// const supabase = createClient();
 
-	const {
-		data: { user },
-	} = await supabase.auth.getUser();
+	// const {
+	// 	data: { user },
+	// } = await supabase.auth.getUser();
 
 	return (
 		<div className="bg-card py-4">
