@@ -14,7 +14,7 @@ export default function ClipboardButton() {
 		navigator.clipboard.writeText(window.location.href);
 		setCopied(true);
 		toast({
-			title: "Link copied.",
+			title: "Copied to clipboard.",
 		});
 
 		// Reset copied state to false after 3 seconds
