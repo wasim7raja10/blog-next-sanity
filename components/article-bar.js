@@ -1,6 +1,6 @@
 "use client";
 
-import { Clipboard, List, Share2 } from "lucide-react";
+import { List, Share2 } from "lucide-react";
 import { Separator } from "./ui/separator";
 import { Button } from "./ui/button";
 import {
@@ -21,6 +21,7 @@ import ContentOutline from "./content-outline";
 import { ScrollArea } from "./ui/scroll-area";
 import BookmarkButton from "./bookmark-button";
 import LikeButton from "./like-button";
+import ClipboardButton from "./clipboard-button";
 
 export default function ArticleBar({ isBookmarked, isLiked, numLikes }) {
 	return (
@@ -56,16 +57,7 @@ export default function ArticleBar({ isBookmarked, isLiked, numLikes }) {
 				</Dialog>
 				<Separator orientation="vertical" className="h-6" />
 
-				<Tooltip>
-					<TooltipTrigger asChild>
-						<Button variant="ghost" size="icon">
-							<Clipboard />
-						</Button>
-					</TooltipTrigger>
-					<TooltipContent>
-						<p>Copy link</p>
-					</TooltipContent>
-				</Tooltip>
+				<ClipboardButton />
 				<Separator orientation="vertical" className="h-6" />
 
 				<Tooltip>
