@@ -20,7 +20,7 @@ export default async function Page({ params }) {
 	});
 
 	return (
-		<div className="prose mx-auto max-w-screen-lg prose-h1:text-center py-16">
+		<div className="prose mx-auto max-w-screen-lg prose-h1:text-center prose-h1:text-3xl py-16">
 			<PortableText value={data?.content} />
 			<p>
 				Last updated: <Date dateString={data?.date} />
