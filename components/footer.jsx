@@ -67,6 +67,13 @@ function FooterColumn({ heading, data }) {
 		<div className="font-medium text-card-foreground-secondary space-y-2">
 			<span className="text-foreground text-xl leading-7">{heading}</span>
 			<ul className="gap-2 grid grid-cols-1">
+				{heading === "Company" && (
+					<li>
+						<Link className="hover:text-foreground max-w-max" href="/legal">
+							Legal Pages
+						</Link>
+					</li>
+				)}
 				{data?.map((it) => (
 					<li key={it.slug}>
 						<Link className="hover:text-foreground max-w-max" href={it.slug}>
