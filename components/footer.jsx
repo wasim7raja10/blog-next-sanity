@@ -24,13 +24,21 @@ export default async function Footer() {
 							<BrandLink />
 						</div>
 						<div className="flex items-center text-card-foreground-secondary justify-evenly">
-							<Link className="hover:text-foreground" href={""}>
+							<Link
+								className="hover:text-foreground"
+								href="https://www.instagram.com/zappotech/"
+								target="_blank"
+							>
 								<Instagram />
 							</Link>
-							<Link className="hover:text-foreground" href={""}>
+							<Link
+								className="hover:text-foreground"
+								href="https://twitter.com/zappotech/"
+								target="_blank"
+							>
 								<Twitter />
 							</Link>
-							<Link className="hover:text-foreground" href={""}>
+							<Link className="hover:text-foreground" href="" target="_blank">
 								<Linkedin />
 							</Link>
 						</div>
