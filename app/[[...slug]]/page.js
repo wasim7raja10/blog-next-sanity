@@ -1,4 +1,5 @@
 import HeroPost from "@/components/hero-post";
+import { getCategory } from "@/lib/get-category";
 import {
 	categoriesQuery,
 	indexQuery,
@@ -7,21 +8,24 @@ import {
 import { sanityFetch } from "@/lib/sanity.server";
 
 export async function generateStaticParams() {
-	const posts = await sanityFetch({ query: categoriesQuery, tags: ["post"] });
+	const categories = await sanityFetch({
+		query: categoriesQuery,
+		tags: ["category"],
+	});
 
-	return posts
-		.map((post) => ({
-			slug: [post.slug],
+	return categories
+		.map((category) => ({
+			slug: [category.slug],
 		}))
 		.concat({ slug: false });
 }
 
 export default async function Page({ params }) {
-	const category = params.slug ? params.slug[0] : undefined;
+	const category = getCategory(params);
 
 	let posts = [];
 
-	if (category) {
+	if (category !== "explore") {
 		posts = await sanityFetch({
 			query: postListByCategoryQuery,
 			qParams: { category },
