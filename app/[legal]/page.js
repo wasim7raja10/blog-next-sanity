@@ -1,6 +1,6 @@
-import Post from "@/components/post";
 import { legalPageBySlugQuery } from "@/lib/queries";
 import { sanityFetch } from "@/lib/sanity.server";
+import { PortableText } from "@portabletext/react";
 
 export async function generateStaticParams() {
 	const legalPages = [
@@ -17,7 +17,12 @@ export default async function Page({ params }) {
 		qParams: { slug: params.legal },
 		tags: ["legal"],
 	});
-	return <div>{JSON.stringify(data)}</div>;
+
+	return (
+		<div className="prose mx-auto max-w-screen-lg prose-h1:text-center py-16">
+			<PortableText value={data?.content} />
+		</div>
+	);
 }
 
 export const dynamicParams = false;
