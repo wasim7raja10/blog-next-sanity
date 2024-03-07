@@ -1,3 +1,4 @@
+import Date from "@/components/date";
 import { legalPageBySlugQuery } from "@/lib/queries";
 import { sanityFetch } from "@/lib/sanity.server";
 import { PortableText } from "@portabletext/react";
@@ -21,6 +22,9 @@ export default async function Page({ params }) {
 	return (
 		<div className="prose mx-auto max-w-screen-lg prose-h1:text-center py-16">
 			<PortableText value={data?.content} />
+			<p>
+				Last updated: <Date dateString={data?.date} />
+			</p>
 		</div>
 	);
 }
