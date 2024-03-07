@@ -1,6 +1,6 @@
 "use client";
 
-import { List, Share2 } from "lucide-react";
+import { List } from "lucide-react";
 import { Separator } from "./ui/separator";
 import { Button } from "./ui/button";
 import {
@@ -22,6 +22,7 @@ import { ScrollArea } from "./ui/scroll-area";
 import BookmarkButton from "./bookmark-button";
 import LikeButton from "./like-button";
 import ClipboardButton from "./clipboard-button";
+import ShareButton from "./share-button";
 
 export default function ArticleBar({ isBookmarked, isLiked, numLikes }) {
 	return (
@@ -60,16 +61,7 @@ export default function ArticleBar({ isBookmarked, isLiked, numLikes }) {
 				<ClipboardButton />
 				<Separator orientation="vertical" className="h-6" />
 
-				<Tooltip>
-					<TooltipTrigger asChild>
-						<Button variant="ghost" size="icon">
-							<Share2 />
-						</Button>
-					</TooltipTrigger>
-					<TooltipContent>
-						<p>Share</p>
-					</TooltipContent>
-				</Tooltip>
+				<ShareButton />
 			</TooltipProvider>
 		</div>
 	);
