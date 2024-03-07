@@ -38,7 +38,11 @@ export default async function Footer() {
 							>
 								<Twitter />
 							</Link>
-							<Link className="hover:text-foreground" href="" target="_blank">
+							<Link
+								className="hover:text-foreground"
+								href="https://www.linkedin.com/company/zappotech/"
+								target="_blank"
+							>
 								<Linkedin />
 							</Link>
 						</div>
