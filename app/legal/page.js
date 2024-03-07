@@ -4,7 +4,7 @@ import Link from "next/link";
 export default function Page() {
 	return (
 		<div className="py-16 max-w-screen-md mx-auto">
-			<h2 className="text-center text-3xl">Legal Pages</h2>
+			<h2 className="text-center text-3xl pb-12">Legal Pages</h2>
 			<ul className="font-medium text-card-foreground-secondary space-y-2">
 				{footerCompanyData.map((it) => (
 					<li key={it.slug}>
