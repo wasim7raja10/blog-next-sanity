@@ -29,6 +29,9 @@ export default function ArticleBar({
 	isLiked,
 	numLikes,
 	post_id,
+	title,
+	hashtags,
+	author,
 }) {
 	return (
 		<div className="border mx-auto max-w-max h-12 rounded-full px-2 sm:px-8 text-sm 2xl:h-14 flex gap-2 sm:gap-8 items-center sticky top-6 bg-white">
@@ -66,7 +69,7 @@ export default function ArticleBar({
 				<ClipboardButton />
 				<Separator orientation="vertical" className="h-6" />
 
-				<ShareButton />
+				<ShareButton title={title} hashtags={hashtags} />
 			</TooltipProvider>
 		</div>
 	);

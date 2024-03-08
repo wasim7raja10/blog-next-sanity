@@ -21,9 +21,11 @@ import {
 	XIcon,
 } from "react-share";
 
-export default function ShareButton() {
+export default function ShareButton({ title, hashtags }) {
 	const url = window.location.href;
 	const originUrl = window.location.origin;
+
+	console.log(hashtags);
 	return (
 		<DropdownMenu>
 			<Tooltip>
@@ -42,9 +44,9 @@ export default function ShareButton() {
 				<DropdownMenuItem>
 					<TwitterShareButton
 						url={url}
-						title={"Title"}
-						hashtags={["hashtag"]}
-						related={["rajadevelops"]}
+						title={title}
+						hashtags={hashtags}
+						related={["zappotech"]}
 						className="flex items-center gap-2"
 					>
 						<XIcon size={20} round /> Share to Twitter
@@ -52,8 +54,7 @@ export default function ShareButton() {
 				</DropdownMenuItem>
 				<DropdownMenuItem>
 					<LinkedinShareButton
-						title="title"
-						summary="summary"
+						title={title}
 						source={originUrl}
 						url={url}
 						className="flex items-center gap-2"
@@ -65,7 +66,7 @@ export default function ShareButton() {
 				<DropdownMenuItem>
 					<RedditShareButton
 						url={url}
-						title="title"
+						title={title}
 						className="flex items-center gap-2"
 					>
 						<RedditIcon size={20} round /> Share to Reddit
@@ -73,7 +74,7 @@ export default function ShareButton() {
 				</DropdownMenuItem>
 				<DropdownMenuItem>
 					<FacebookShareButton
-						hashtag="hashtag"
+						hashtag={hashtags}
 						url={url}
 						className="flex items-center gap-2"
 					>

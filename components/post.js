@@ -64,6 +64,8 @@ export default async function Post({ data = {} }) {
 								isLiked={isLiked}
 								numLikes={numLikes}
 								post_id={post._id}
+								hashtags={post.categories.map((it) => it.slug)}
+								title={post.title}
 							/>
 							<PostBody post={post} />
 						</article>
