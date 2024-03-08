@@ -24,14 +24,19 @@ import LikeButton from "./like-button";
 import ClipboardButton from "./clipboard-button";
 import ShareButton from "./share-button";
 
-export default function ArticleBar({ isBookmarked, isLiked, numLikes }) {
+export default function ArticleBar({
+	isBookmarked,
+	isLiked,
+	numLikes,
+	post_id,
+}) {
 	return (
 		<div className="border mx-auto max-w-max h-12 rounded-full px-2 sm:px-8 text-sm 2xl:h-14 flex gap-2 sm:gap-8 items-center sticky top-6 bg-white">
 			<TooltipProvider delayDuration={0}>
-				<LikeButton isLiked={isLiked} numLikes={numLikes} />
+				<LikeButton isLiked={isLiked} numLikes={numLikes} post_id={post_id} />
 				<Separator orientation="vertical" className="h-6" />
 
-				<BookmarkButton isBookmarked={isBookmarked} />
+				<BookmarkButton isBookmarked={isBookmarked} post_id={post_id} />
 				<Separator orientation="vertical" className="h-6" />
 
 				<Dialog>
