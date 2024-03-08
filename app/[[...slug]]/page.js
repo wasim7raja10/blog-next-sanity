@@ -21,11 +21,11 @@ export async function generateStaticParams() {
 }
 
 export default async function Page({ params }) {
-	const category = getCategory(params);
+	const category = params.slug ? params.slug[0] : undefined;
 
 	let posts = [];
 
-	if (category !== "explore") {
+	if (category) {
 		posts = await sanityFetch({
 			query: postListByCategoryQuery,
 			qParams: { category },
