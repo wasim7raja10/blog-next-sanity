@@ -76,7 +76,10 @@ function FooterColumn({ heading, data }) {
 				)}
 				{data?.map((it) => (
 					<li key={it.slug}>
-						<Link className="hover:text-foreground max-w-max" href={it.slug}>
+						<Link
+							className="hover:text-foreground max-w-max"
+							href={"/" + it.slug}
+						>
 							{it.name}
 						</Link>
 					</li>
