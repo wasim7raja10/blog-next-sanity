@@ -10,8 +10,20 @@ import {
 	DropdownMenuItem,
 	DropdownMenuTrigger,
 } from "./ui/dropdown-menu";
+import {
+	FacebookIcon,
+	FacebookShareButton,
+	LinkedinIcon,
+	LinkedinShareButton,
+	RedditIcon,
+	RedditShareButton,
+	TwitterShareButton,
+	XIcon,
+} from "react-share";
 
 export default function ShareButton() {
+	const url = window.location.href;
+	const originUrl = window.location.origin;
 	return (
 		<DropdownMenu>
 			<Tooltip>
@@ -26,13 +38,52 @@ export default function ShareButton() {
 					<p>Share</p>
 				</TooltipContent>
 			</Tooltip>
-			<DropdownMenuContent align="end" className="w-[160px]">
-				<DropdownMenuItem>Share to Twitter</DropdownMenuItem>
-				<DropdownMenuItem>Share to Linkedin</DropdownMenuItem>
-				<DropdownMenuItem>Share to Reddit</DropdownMenuItem>
-				<DropdownMenuItem>Share to Facebook</DropdownMenuItem>
-				<DropdownMenuItem>Share to Mastodon</DropdownMenuItem>
-				<DropdownMenuItem>Share Post via...</DropdownMenuItem>
+			<DropdownMenuContent align="end" className="w-[180px]">
+				<DropdownMenuItem>
+					<TwitterShareButton
+						url={url}
+						title={"Title"}
+						hashtags={["hashtag"]}
+						related={["rajadevelops"]}
+						className="flex items-center gap-2"
+					>
+						<XIcon size={20} round /> Share to Twitter
+					</TwitterShareButton>
+				</DropdownMenuItem>
+				<DropdownMenuItem>
+					<LinkedinShareButton
+						title="title"
+						summary="summary"
+						source={originUrl}
+						url={url}
+						className="flex items-center gap-2"
+					>
+						<LinkedinIcon size={20} round />
+						Share to Linkedin
+					</LinkedinShareButton>
+				</DropdownMenuItem>
+				<DropdownMenuItem>
+					<RedditShareButton
+						url={url}
+						title="title"
+						className="flex items-center gap-2"
+					>
+						<RedditIcon size={20} round /> Share to Reddit
+					</RedditShareButton>
+				</DropdownMenuItem>
+				<DropdownMenuItem>
+					<FacebookShareButton
+						hashtag="hashtag"
+						url={url}
+						className="flex items-center gap-2"
+					>
+						<FacebookIcon size={20} round /> Share to Facebook
+					</FacebookShareButton>
+				</DropdownMenuItem>
+				<DropdownMenuItem className="flex items-center gap-2">
+					<Share2 size={20} />
+					Share Post via...
+				</DropdownMenuItem>
 			</DropdownMenuContent>
 		</DropdownMenu>
 	);
