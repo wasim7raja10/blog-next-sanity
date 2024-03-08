@@ -25,7 +25,7 @@ export default async function Page({ params }) {
 
 	let posts = [];
 
-	if (category !== "explore") {
+	if (category) {
 		posts = await sanityFetch({
 			query: postListByCategoryQuery,
 			qParams: { category },
