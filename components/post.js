@@ -9,8 +9,6 @@ import { createClient } from "@/lib/supabase/server";
 export default async function Post({ data = {} }) {
 	const { post, morePosts } = data;
 
-	console.log(post);
-
 	const supabase = createClient();
 
 	let isBookmarked = false,
