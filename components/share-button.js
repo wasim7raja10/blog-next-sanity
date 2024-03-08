@@ -20,20 +20,14 @@ import {
 	TwitterShareButton,
 	XIcon,
 } from "react-share";
-import { useEffect } from "react";
 
-export default function ShareButton({
-	title,
-	hashtags,
-	url = "",
-	originUrl = "",
-}) {
-	useEffect(() => {
-		if (typeof window !== "undefined") {
-			url = window.location.href;
-			originUrl = window.location.origin;
-		}
-	}, []);
+export default function ShareButton({ title, hashtags }) {
+	let url, originUrl;
+
+	if (typeof window !== "undefined") {
+		url = window?.location.href;
+		originUrl = window?.location.origin;
+	}
 
 	return (
 		<DropdownMenu>
