@@ -84,10 +84,10 @@ export default function ShareButton({ title, hashtags }) {
 						<FacebookIcon size={20} round /> Share to Facebook
 					</FacebookShareButton>
 				</DropdownMenuItem>
-				<DropdownMenuItem className="flex items-center gap-2">
+				{/* <DropdownMenuItem className="flex items-center gap-2">
 					<Share2 size={20} />
 					Share Post via...
-				</DropdownMenuItem>
+				</DropdownMenuItem> */}
 			</DropdownMenuContent>
 		</DropdownMenu>
 	);
