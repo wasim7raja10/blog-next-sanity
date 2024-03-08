@@ -4,16 +4,12 @@ import { Bookmark } from "lucide-react";
 import { Button } from "./ui/button";
 import { Tooltip, TooltipContent, TooltipTrigger } from "./ui/tooltip";
 import { createClient } from "@/lib/supabase/client";
-import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { useToast } from "./ui/use-toast";
 
-export default function BookmarkButton({ isBookmarked = false }) {
+export default function BookmarkButton({ isBookmarked = false, post_id }) {
 	const [isBookmarkedState, setIsBookmarkedState] = useState(isBookmarked);
 	const { toast } = useToast();
-
-	const pathname = usePathname();
-	const slug = pathname.split("/").at(2);
 
 	async function handleBookmark() {
 		const supabase = createClient();
@@ -25,14 +21,14 @@ export default function BookmarkButton({ isBookmarked = false }) {
 		if (user) {
 			if (!isBookmarkedState) {
 				await supabase.from("bookmarks").insert({
-					slug,
+					post_id,
 				});
 				setIsBookmarkedState(true);
 			} else {
 				await supabase
 					.from("bookmarks")
 					.delete()
-					.match({ slug, user_id: user.id });
+					.match({ post_id, user_id: user.id });
 				setIsBookmarkedState(false);
 			}
 		} else {

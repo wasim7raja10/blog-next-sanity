@@ -21,7 +21,7 @@ export default async function Post({ data = {} }) {
 
 	if (user) {
 		isBookmarked =
-			(await supabase.from("bookmarks").select().match({ slug: post.slug }))
+			(await supabase.from("bookmarks").select().match({ post_id: post._id }))
 				.data.length > 0;
 
 		isLiked =
@@ -29,12 +29,13 @@ export default async function Post({ data = {} }) {
 				await supabase
 					.from("likes")
 					.select()
-					.match({ slug: post.slug, user_id: user.id })
+					.match({ post_id: post._id, user_id: user.id })
 			).data.length > 0;
 	}
 
-	numLikes = (await supabase.from("likes").select().match({ slug: post.slug }))
-		.data.length;
+	numLikes = (
+		await supabase.from("likes").select().match({ post_id: post._id })
+	).data.length;
 
 	return (
 		<main className="">
@@ -62,6 +63,9 @@ export default async function Post({ data = {} }) {
 								isBookmarked={isBookmarked}
 								isLiked={isLiked}
 								numLikes={numLikes}
+								post_id={post._id}
+								hashtags={post.categories.map((it) => it.slug)}
+								title={post.title}
 							/>
 							<PostBody post={post} />
 						</article>

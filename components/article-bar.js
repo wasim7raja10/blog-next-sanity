@@ -1,6 +1,6 @@
 "use client";
 
-import { Clipboard, List, Share2 } from "lucide-react";
+import { List } from "lucide-react";
 import { Separator } from "./ui/separator";
 import { Button } from "./ui/button";
 import {
@@ -21,15 +21,24 @@ import ContentOutline from "./content-outline";
 import { ScrollArea } from "./ui/scroll-area";
 import BookmarkButton from "./bookmark-button";
 import LikeButton from "./like-button";
+import ClipboardButton from "./clipboard-button";
+import ShareButton from "./share-button";
 
-export default function ArticleBar({ isBookmarked, isLiked, numLikes }) {
+export default function ArticleBar({
+	isBookmarked,
+	isLiked,
+	numLikes,
+	post_id,
+	title,
+	hashtags,
+}) {
 	return (
 		<div className="border mx-auto max-w-max h-12 rounded-full px-2 sm:px-8 text-sm 2xl:h-14 flex gap-2 sm:gap-8 items-center sticky top-6 bg-white">
 			<TooltipProvider delayDuration={0}>
-				<LikeButton isLiked={isLiked} numLikes={numLikes} />
+				<LikeButton isLiked={isLiked} numLikes={numLikes} post_id={post_id} />
 				<Separator orientation="vertical" className="h-6" />
 
-				<BookmarkButton isBookmarked={isBookmarked} />
+				<BookmarkButton isBookmarked={isBookmarked} post_id={post_id} />
 				<Separator orientation="vertical" className="h-6" />
 
 				<Dialog>
@@ -56,28 +65,10 @@ export default function ArticleBar({ isBookmarked, isLiked, numLikes }) {
 				</Dialog>
 				<Separator orientation="vertical" className="h-6" />
 
-				<Tooltip>
-					<TooltipTrigger asChild>
-						<Button variant="ghost" size="icon">
-							<Clipboard />
-						</Button>
-					</TooltipTrigger>
-					<TooltipContent>
-						<p>Copy link</p>
-					</TooltipContent>
-				</Tooltip>
+				<ClipboardButton />
 				<Separator orientation="vertical" className="h-6" />
 
-				<Tooltip>
-					<TooltipTrigger asChild>
-						<Button variant="ghost" size="icon">
-							<Share2 />
-						</Button>
-					</TooltipTrigger>
-					<TooltipContent>
-						<p>Share</p>
-					</TooltipContent>
-				</Tooltip>
+				<ShareButton title={title} hashtags={hashtags} />
 			</TooltipProvider>
 		</div>
 	);
