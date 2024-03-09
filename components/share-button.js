@@ -93,6 +93,8 @@ export default function ShareButton({ title, hashtags }) {
 					<WhatsappShareButton
 						url={url}
 						title={title}
+						windowHeight={600}
+						windowWidth={800}
 						className="flex items-center gap-2"
 					>
 						<WhatsappIcon size={20} round /> Share to Whatsapp
