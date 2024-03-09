@@ -20,14 +20,17 @@ import {
 	TwitterShareButton,
 	XIcon,
 } from "react-share";
+import { usePathname } from "next/navigation";
 
 export default function ShareButton({ title, hashtags }) {
-	let url, originUrl;
+	let originUrl;
 
 	if (typeof window !== "undefined") {
-		url = window?.location.href;
 		originUrl = window?.location.origin;
 	}
+
+	const pathname = usePathname();
+	const url = originUrl + pathname;
 
 	return (
 		<DropdownMenu>
