@@ -18,6 +18,8 @@ import {
 	RedditIcon,
 	RedditShareButton,
 	TwitterShareButton,
+	WhatsappIcon,
+	WhatsappShareButton,
 	XIcon,
 } from "react-share";
 import { usePathname } from "next/navigation";
@@ -86,6 +88,17 @@ export default function ShareButton({ title, hashtags }) {
 					>
 						<FacebookIcon size={20} round /> Share to Facebook
 					</FacebookShareButton>
+				</DropdownMenuItem>
+				<DropdownMenuItem>
+					<WhatsappShareButton
+						url={url}
+						title={title}
+						windowHeight={600}
+						windowWidth={800}
+						className="flex items-center gap-2"
+					>
+						<WhatsappIcon size={20} round /> Share to Whatsapp
+					</WhatsappShareButton>
 				</DropdownMenuItem>
 				{/* <DropdownMenuItem className="flex items-center gap-2">
 					<Share2 size={20} />
