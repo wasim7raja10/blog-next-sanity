@@ -19,11 +19,11 @@ export default async function CategoriesBar({ currentCategory }) {
 					type="single"
 					size="sm"
 				>
-					<Link href="/">
+					<Link className="shadow" href="/">
 						<ToggleGroupItem value="explore">Explore</ToggleGroupItem>
 					</Link>
 					{data?.map((it) => (
-						<Link key={it.slug} href={it.slug}>
+						<Link className="shadow" key={it.slug} href={it.slug}>
 							<ToggleGroupItem value={it.slug}>{it.name}</ToggleGroupItem>
 						</Link>
 					))}
