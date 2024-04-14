@@ -10,7 +10,7 @@ function LoadingIcon() {
 			style={{}}
 		>
 			<g fill="none">
-				<circle cx="50" cy="50" r="0" stroke="#e90c59">
+				<circle cx="50" cy="50" r="0" stroke="#2121bf">
 					<animate
 						attributeName="r"
 						begin="0s"
@@ -32,7 +32,7 @@ function LoadingIcon() {
 						values="1;0"
 					></animate>
 				</circle>
-				<circle cx="50" cy="50" r="0" stroke="#46dff0">
+				<circle cx="50" cy="50" r="0" stroke="#212121">
 					<animate
 						attributeName="r"
 						begin="-0.5s"
