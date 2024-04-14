@@ -3,8 +3,8 @@ import { Skeleton } from "@/components/ui/skeleton";
 export default function Loading({ isSmall }) {
 	return (
 		<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 mx-auto max-w-max pb-24">
-			{new Array(6).fill(0).map((it) => (
-				<div className="w-[340px] rounded-md space-y-3">
+			{new Array(6).fill(0).map((_, index) => (
+				<div key={index} className="w-[340px] rounded-md space-y-3">
 					<div className="h-60 w-full">
 						<Skeleton className="w-full h-full"></Skeleton>
 						{/* <Badge className="absolute bottom-2 right-2">#{category.name}</Badge> */}

@@ -3,8 +3,8 @@ import { Skeleton } from "./ui/skeleton";
 export default function SearchResultLoading() {
 	return (
 		<div className="space-y-4 my-4">
-			{new Array(3).fill(0).map((_) => (
-				<div className=" rounded-md overflow-hidden flex max-w-full space-y-0">
+			{new Array(3).fill(0).map((_, index) => (
+				<div key={index} className=" rounded-md overflow-hidden flex max-w-full space-y-0">
 					<div className="sm:min-h-[150px] min-h-[94px] sm:min-w-[192px] min-w-[120px]">
 						<Skeleton className="w-full h-full"></Skeleton>
 						{/* <Badge className="absolute bottom-2 right-2">#{category.name}</Badge> */}
