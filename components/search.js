@@ -2,25 +2,27 @@
 
 import { Mic, SearchIcon } from "lucide-react";
 import { Input } from "./ui/input";
-import { ScrollArea } from "./ui/scroll-area";
 import { useDebouncedCallback } from "use-debounce";
 import { useState } from "react";
 import { algoliaIndex } from "@/lib/algolia";
-import HeroPost from "./hero-post";
-import { SheetClose } from "./ui/sheet";
+import SearchResult from "./search-result";
 
 export default function Search() {
 	const [result, setResult] = useState([]);
+	const [loading, setLoading] = useState(false);
 
 	const handleSearch = useDebouncedCallback(async (term) => {
 		if (term.trim().length === 0) {
 			setResult([]);
 			return;
 		}
+		setLoading(true);
 		try {
 			const { hits } = await algoliaIndex.search(term);
 			setResult(hits);
+			setLoading(false);
 		} catch (err) {
+			setLoading(false);
 			console.error("Error search algolia", err);
 		}
 	}, 300);
@@ -43,25 +45,7 @@ export default function Search() {
 					className="absolute right-2 top-0 transform translate-y-1/2 cursor-pointer"
 				/>
 			</div>
-			<ScrollArea className="h-[88%] w-full rounded-md my-4">
-				<div className="flex flex-col gap-4">
-					{result.length > 0 &&
-						result.map((it) => (
-							<SheetClose asChild key={it.slug}>
-								<HeroPost
-									title={it.title}
-									coverImage={it.coverImage}
-									date={it.date}
-									author={it.author}
-									slug={it.slug}
-									excerpt={it.excerpt}
-									category={it.categories[0]}
-									isSmall
-								/>
-							</SheetClose>
-						))}
-				</div>
-			</ScrollArea>
+			<SearchResult result={result} loading={loading} />
 		</>
 	);
 }
